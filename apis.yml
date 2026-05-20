@@ -4,6 +4,8 @@ url:
 modified: '2026-03-24'
 apis: []
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/select-medical-holdings
   - type: Website
     url: https://www.select-medical-holdings.com
 description: >-
