@@ -105,6 +105,9 @@ apis:
       - type: Registry
         url: https://open.epic.com/Endpoints/DSTU2
 common:
+  - type: CapabilityMap
+    url: capabilities/select-medical-holdings-capability-edges.yml
+    name: Select Medical Holdings Business Capability Map
   - type: Website
     url: https://www.selectmedical.com
   - type: LinkedIn

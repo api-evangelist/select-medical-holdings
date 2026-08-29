@@ -1,0 +1,26 @@
+slug: select-medical-holdings
+provider: Select Medical Holdings
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Account
+  spec_file: select-medical-holdings-fhir-r4-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: Machine-readable description of the Select Medical FHIR R4 server ... Access is SMART-on-FHIR
+    OAuth 2.0
+  reason: Tag is one FHIR resource in a broad FHIR R4 server (Account, AllergyIntolerance, Appointment,
+    Binary...). The surface as a whole is a FHIR interoperability endpoint for provider data exchange,
+    which maps to healthcare interoperability operations rather than to billing account management.
