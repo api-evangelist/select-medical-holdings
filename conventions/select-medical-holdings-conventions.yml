@@ -1,0 +1,115 @@
+generated: '2026-08-28'
+method: derived
+source: >-
+  fhir/select-medical-holdings-r4-capabilitystatement.json,
+  well-known/select-medical-holdings-smart-configuration.json, and the HL7 FHIR R4 RESTful binding
+  the server declares conformance to
+note: >-
+  Select Medical publishes no API convention guide of its own. Everything below is read out of the
+  server's own CapabilityStatement or fixed by the FHIR R4 specification it declares conformance to.
+  Where the server declares a capability as unsupported, that is recorded as unsupported rather than
+  left blank — the absences here are the most decision-relevant part of the file for an agent.
+auth:
+  style: oauth2-bearer
+  standard: SMART App Launch
+  header: 'Authorization: Bearer <access_token>'
+  anonymous_surface:
+    - /metadata
+    - /.well-known/smart-configuration
+  note: Every clinical resource requires a token; only discovery is anonymous.
+  see: authentication/select-medical-holdings-authentication.yml
+content_negotiation:
+  request_header: 'Accept: application/fhir+json'
+  formats_supported: [json, xml]
+  evidence: CapabilityStatement.format = ["xml","json"]
+  note: >-
+    FHIR also honours the _format query parameter. XML is fully supported here, which is unusual
+    outside healthcare and matters for older certified clients.
+pagination:
+  style: bundle-link-cursor
+  page_size_param: _count
+  page_size_param_declared_on: all 59 resource types
+  next_page: Bundle.link where relation = "next" (follow the absolute URL verbatim)
+  total: Bundle.total
+  note: >-
+    Cursor-style, not offset — there is no page/offset parameter. An agent must follow
+    Bundle.link[next] rather than construct the next page itself.
+filtering:
+  style: fhir-search
+  parameter_count: 702
+  note: >-
+    Search parameters are declared per resource type with verbatim documentation from the server.
+    Common modifiers (:exact, :contains, :missing) and prefixes (gt, lt, ge, le) are FHIR-standard.
+  includes:
+    _include: supported (declared "*" on many resources)
+    _revinclude: supported (commonly Provenance:target)
+versioning:
+  style: uri-path
+  current: R4 (4.0.1) at /FhirProxy/api/FHIR/R4
+  previous: DSTU2 (1.0.2) at /FhirProxy/api/FHIR/DSTU2 — still listed active
+  resource_versioning: not-supported
+  resource_versioning_evidence: all 59 resources declare readHistory:false
+  note: >-
+    Version is a path segment, not a header. Because readHistory is false, an agent cannot retrieve
+    a prior version of a resource or audit what changed.
+  see: lifecycle/select-medical-holdings-lifecycle.yml
+error_envelope:
+  format: fhir-operationoutcome
+  media_type: application/fhir+json
+  rfc9457: false
+  see: errors/select-medical-holdings-problem-types.yml
+idempotency:
+  supported: false
+  status: unsupported
+  evidence: >-
+    All 59 resource types declare conditionalCreate:false, conditionalUpdate:false,
+    conditionalDelete:"not-supported" and updateCreate:false. No idempotency-key header is
+    documented and no ETag/If-Match optimistic concurrency is advertised.
+  consequence: >-
+    A create that times out cannot be safely retried — there is no If-None-Exist conditional create
+    and no client-supplied key to de-duplicate on, so a retry risks a duplicate clinical record. An
+    agent should treat every POST here as at-most-once and reconcile by searching before retrying.
+rate_limit_signal:
+  headers_observed: []
+  status: undocumented
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header was present on the anonymous metadata and
+    smart-configuration responses. Throttling behaviour is not published.
+  see: rate-limits/select-medical-holdings-rate-limits.yml
+request_tracing:
+  header: none-documented
+  note: No request-id or correlation header is documented or observed.
+dry_run_mode:
+  supported: false
+  status: unsupported
+  note: >-
+    No $validate operation is declared in the CapabilityStatement (rest.operation is empty and no
+    resource declares operations), so there is no server-side way to rehearse a write.
+reversibility:
+  grade: none
+  applicable: true
+  write_surface_present: true
+  write_operations:
+    create: 11 resource types
+    update: 7 resource types
+    delete: 0 resource types
+  reversal_operations: []
+  window: null
+  evidence: >-
+    The CapabilityStatement declares only create, read, search-type and update across all 59
+    resource types. No delete interaction is declared anywhere, conditionalDelete is
+    "not-supported" on every resource, and no reversal, cancel, void or $-operation of any kind is
+    declared (rest.operation is empty on the server and on every resource).
+  consequence: >-
+    A write to this API is one-way through the API. There is no delete, no undo, no cancel and no
+    documented correction window. The only reversal path FHIR itself offers here is a compensating
+    update on the 7 resource types that support update — and for the other 4 creatable-but-not-
+    updatable types not even that. An agent must treat every create as permanent and get it right
+    the first time; correcting a mistaken clinical record requires a human and an out-of-band
+    process at the health system.
+  note: >-
+    NO reversal window is asserted because Select Medical publishes none. Recording an invented one
+    here would be worse than recording nothing.
+metadata_fields:
+  supported: true
+  note: FHIR resources carry meta.tag, meta.security and meta.profile.

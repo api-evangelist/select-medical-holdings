@@ -1,0 +1,91 @@
+generated: '2026-08-28'
+method: probed
+source: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+docs: https://fhir.epic.com/Documentation?docId=oauth2
+note: >-
+  Read directly from the two discovery documents the Select Medical FHIR server serves anonymously
+  (smart-configuration HTTP 200, openid-configuration HTTP 200, both fetched 2026-08-28), and
+  cross-checked against the security block of the server's own CapabilityStatement. This is a
+  SMART-on-FHIR deployment on Epic; there is no API-key or basic-auth path.
+summary:
+  types:
+    - oauth2
+    - openIdConnect
+  oauth2_flows:
+    - authorizationCode
+    - clientCredentials
+    - jwtBearer
+    - refreshToken
+  public_registration: false
+  registration_note: >-
+    App registration is not self-serve at Select Medical. Client IDs are issued through Epic's
+    App Orchard / Vendor Services program and then activated by the health system, so an agent
+    cannot obtain credentials from the endpoint alone.
+schemes:
+  - name: smartOnFhir
+    type: oauth2
+    standard: SMART App Launch (SMART on FHIR)
+    description: >-
+      SMART-on-FHIR OAuth 2.0. The CapabilityStatement advertises the authorize and token URIs via the
+      standard SMART oauth-uris extension, and declares OAuth + SMART-on-FHIR under rest.security.service.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+        tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+        pkce: true
+        pkce_methods:
+          - S256
+      - flow: clientCredentials
+        tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+        note: Backend-services flow; requires asymmetric (private_key_jwt) client authentication.
+      - flow: jwtBearer
+        grant_type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+    token_endpoint_auth_methods:
+      - client_secret_post
+      - client_secret_basic
+      - private_key_jwt
+    smart_capabilities:
+      - launch-ehr
+      - launch-standalone
+      - client-public
+      - client-confidential-symmetric
+      - client-confidential-asymmetric
+      - context-banner
+      - context-style
+      - context-ehr-patient
+      - context-ehr-encounter
+      - context-standalone-patient
+      - permission-offline
+      - permission-patient
+      - permission-user
+      - permission-v1
+      - permission-v2
+      - sso-openid-connect
+      - authorize-post
+    sources:
+      - https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+      - fhir/select-medical-holdings-r4-capabilitystatement.json
+  - name: openIdConnect
+    type: openIdConnect
+    description: >-
+      OpenID Connect discovery is served at the FhirProxy oauth2 issuer, so the same credentials carry
+      an identity assertion (sso-openid-connect is declared among the SMART capabilities).
+    issuer: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2
+    openIdConnectUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/.well-known/openid-configuration
+    jwks_uri: https://epicproxy.et0948.epichosted.com/FhirProxy/api/epic/2019/Security/Open/PublicKeys/530027/OIDC
+    id_token_signing_alg_values_supported:
+      - RS256
+    subject_types_supported:
+      - public
+    sources:
+      - https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/.well-known/openid-configuration
+x-evidence:
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+    http_status: 200
+    content_type: application/json; charset=utf-8
+    fetched: '2026-08-28'
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/.well-known/openid-configuration
+    http_status: 200
+    content_type: application/json; charset=utf-8
+    fetched: '2026-08-28'

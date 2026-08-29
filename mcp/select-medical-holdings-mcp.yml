@@ -1,0 +1,76 @@
+generated: '2026-08-28'
+method: derived
+source: openapi/select-medical-holdings-fhir-r4-openapi.yml
+status: candidate
+note: >-
+  Select Medical ships NO MCP server. This file is a derived candidate tool surface only — it
+  records what an MCP server over this provider's FHIR endpoint would expose if someone built one.
+  Nothing here is callable today and no MCPServer pointer is wired into apis.yml, because the
+  provider publishes no server. Searched for a hosted or packaged server and found none: no
+  mcp.selectmedical.com, no npm/PyPI package, nothing in Epic's public directory.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: derived
+search_evidence:
+  - url: https://api.selectmedical.com/
+    status: 0
+    note: NXDOMAIN
+  - url: https://developer.selectmedical.com/
+    status: 0
+    note: NXDOMAIN
+  - registry: npm / PyPI
+    result: no first-party Select Medical MCP package found
+candidate_tools:
+  - name: search_patient
+    description: Find a patient by name, birth date, identifier or demographics.
+    rest: [searchPatient]
+    consequence: read
+  - name: get_patient
+    description: Read a single patient record by logical id.
+    rest: [readPatient]
+    consequence: read
+  - name: search_condition
+    description: List a patient's diagnoses, problems and health concerns.
+    rest: [searchCondition]
+    consequence: read
+  - name: search_observation
+    description: Retrieve vital signs, lab results and assessments for a patient.
+    rest: [searchObservation]
+    consequence: read
+  - name: search_medication_request
+    description: List a patient's medication orders.
+    rest: [searchMedicationRequest]
+    consequence: read
+  - name: search_allergy_intolerance
+    description: List a patient's documented allergies and intolerances.
+    rest: [searchAllergyIntolerance]
+    consequence: read
+  - name: search_encounter
+    description: List a patient's hospital and clinic encounters.
+    rest: [searchEncounter]
+    consequence: read
+  - name: search_document_reference
+    description: Find clinical notes and document references for a patient.
+    rest: [searchDocumentReference]
+    consequence: read
+  - name: search_immunization
+    description: Retrieve a patient's immunization history.
+    rest: [searchImmunization]
+    consequence: read
+  - name: search_care_plan
+    description: Retrieve active care plans for a patient.
+    rest: [searchCarePlan]
+    consequence: read
+caveats:
+  - >-
+    Every tool above touches PHI and requires SMART-on-FHIR patient authorization. There is no
+    anonymous read path, so an MCP server over this endpoint could not be usefully public.
+  - >-
+    Write tools are deliberately omitted from this candidate list. The API supports create on 11
+    resource types and update on 7, but declares no delete, no conditional create/update and no
+    idempotency key — so an agent-driven write is unretryable and irreversible. See the
+    reversibility block in conventions/select-medical-holdings-conventions.yml.

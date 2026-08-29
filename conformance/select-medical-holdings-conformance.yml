@@ -1,0 +1,119 @@
+generated: '2026-08-28'
+method: probed
+source: >-
+  fhir/select-medical-holdings-r4-capabilitystatement.json (fetched live 2026-08-28, HTTP 200) and
+  the server's .well-known/smart-configuration
+note: >-
+  Every assertion below is read out of a machine-readable document the Select Medical FHIR server
+  serves itself. Nothing here is taken from a marketing page. Where a standard is not conformed to,
+  that is recorded as conforms:false with the same evidence discipline.
+standards:
+  - id: fhir
+    name: HL7 FHIR R4
+    conforms: true
+    version: 4.0.1
+    evidence: >-
+      CapabilityStatement.fhirVersion = "4.0.1"; resourceType = "CapabilityStatement"; 59 resource
+      types declared with read/search-type/create/update interactions at
+      https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (HTTP 200,
+      application/fhir+json).
+  - id: fhir-dstu2
+    name: HL7 FHIR DSTU2
+    conforms: true
+    version: 1.0.2
+    evidence: >-
+      Conformance.fhirVersion = "1.0.2" with 17 resource types at
+      https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2/metadata (HTTP 200). Legacy
+      endpoint, still listed active in Epic's public DSTU2 directory.
+  - id: us-core
+    name: HL7 US Core Implementation Guide
+    conforms: true
+    version: 6.1.0
+    evidence: >-
+      47 supportedProfile declarations pinned to |6.1.0 across 24 resource types, including
+      us-core-patient, us-core-condition-problems-health-concerns, us-core-documentreference,
+      us-core-medicationrequest, us-core-immunization, us-core-careplan and 22 Observation profiles
+      (vital signs, pediatric BMI-for-age, head-occipital-frontal-circumference-percentile).
+  - id: smart-app-launch
+    name: SMART App Launch (SMART on FHIR)
+    conforms: true
+    evidence: >-
+      .well-known/smart-configuration served at the FHIR base (HTTP 200) declaring capabilities
+      launch-ehr, launch-standalone, client-confidential-asymmetric, context-ehr-patient,
+      permission-patient, permission-user, permission-v1, permission-v2, permission-offline and
+      sso-openid-connect; rest.security.service also codes SMART-on-FHIR and OAuth.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence: >-
+      authorization_endpoint and token_endpoint published in smart-configuration; grant types
+      authorization_code, refresh_token, client_credentials and jwt-bearer; PKCE S256 supported.
+  - id: oidc
+    name: OpenID Connect
+    conforms: true
+    evidence: >-
+      OpenID Connect discovery document at /FhirProxy/oauth2/.well-known/openid-configuration
+      (HTTP 200) with issuer, jwks_uri and RS256 id_token signing.
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: >-
+      No application/problem+json anywhere in the CapabilityStatement. FHIR uses its own error
+      envelope, OperationOutcome, which is the domain-correct equivalent — see
+      errors/select-medical-holdings-problem-types.yml.
+  - id: idempotency
+    name: Idempotent write semantics
+    conforms: false
+    evidence: >-
+      All 59 resources declare conditionalCreate:false, conditionalUpdate:false and
+      conditionalDelete:"not-supported"; readHistory:false and updateCreate:false. The server
+      publishes no idempotency key, no If-None-Exist conditional create and no ETag/If-Match
+      concurrency control, so a retried create cannot be de-duplicated by the client.
+  - id: pagination
+    name: Paginated collection responses
+    conforms: true
+    evidence: >-
+      FHIR searchset Bundle paging; _count is declared as a search parameter on all 59 resource
+      types ("Number of results per page") and Bundle.link carries the next-page relation.
+  - id: cors
+    name: Cross-Origin Resource Sharing
+    conforms: true
+    evidence: CapabilityStatement.rest.security.cors = true.
+  - id: hipaa
+    name: HIPAA
+    conforms: true
+    evidence: >-
+      Select Medical is a US covered entity operating patient-care facilities; PHI access on this
+      endpoint is gated by SMART-on-FHIR patient authorization. Statutory status, not a published
+      certification — no trust center or audit report was found (see
+      security/select-medical-holdings-vulnerability-disclosure probe, which found none).
+    caveat: regulatory-status-not-published-attestation
+domain_standard:
+  id: us-core
+  name: HL7 US Core 6.1.0 on FHIR R4, exposed via SMART App Launch
+  market: US healthcare provider interoperability
+  conforms: true
+  spec_location: >-
+    rest.resource[].supportedProfile in
+    fhir/select-medical-holdings-r4-capabilitystatement.json — 47 declarations pinned to
+    http://hl7.org/fhir/us/core/StructureDefinition/*|6.1.0
+  why_it_matters: >-
+    This is the ONC Cures Act / USCDI patient-access shape. Any application that already speaks US
+    Core 6.1.0 — a payer, an HIE, a personal health record, a care-coordination agent — can read
+    Select Medical patient data with no bespoke connector, because the resource profiles, the search
+    parameters and the OAuth handshake are all the standard ones. The endpoint is also listed in
+    Epic's public directory, so it is discoverable without contacting Select Medical.
+  registry:
+    name: Epic public FHIR endpoint directory
+    url: https://open.epic.com/Endpoints/R4
+    listed_as: Select Medical
+    active_since: '2024-11-09'
+x-evidence:
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata
+    http_status: 200
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2/metadata
+    http_status: 200
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+    http_status: 200
+  - url: https://open.epic.com/Endpoints/R4
+    http_status: 200

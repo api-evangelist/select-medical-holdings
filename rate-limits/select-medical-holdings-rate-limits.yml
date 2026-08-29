@@ -1,0 +1,27 @@
+generated: '2026-08-28'
+method: probed
+source: >-
+  Response headers observed on live anonymous requests to the Select Medical FHIR server
+  (metadata and .well-known/smart-configuration), plus a search for any published limits
+limit_count: 0
+rate_limits: []
+headers_returned: []
+status_code_on_exhaustion: unknown
+note: >-
+  No rate limits are published and none are signalled at runtime. The two anonymous 200 responses
+  from the FHIR host returned no RateLimit-*, X-RateLimit-* or Retry-After header, and Select
+  Medical publishes no developer documentation in which a limit could be stated. Epic deployments
+  do throttle, but the threshold is set per health system and is not exposed to callers here, so an
+  agent gets no runtime signal and must back off on 429 blind. Recorded as an honest zero.
+pagination_control:
+  param: _count
+  note: >-
+    The only client-side volume control the server does declare is the FHIR _count page-size
+    parameter, present on all 59 resource types.
+x-evidence:
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata
+    status: 200
+    note: no rate-limit headers present
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+    status: 200
+    note: no rate-limit headers present

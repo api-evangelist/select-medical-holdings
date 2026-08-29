@@ -1,30 +1,156 @@
 aid: select-medical-holdings
 name: "Select Medical Holdings"
+description: >-
+  Select Medical Holdings Corporation is one of the largest operators of specialty hospitals and
+  outpatient rehabilitation clinics in the United States, running critical illness recovery hospitals,
+  inpatient rehabilitation hospitals, outpatient rehabilitation clinics and occupational health centers
+  across the country. Select Medical is not a software vendor and publishes no commercial developer
+  program, but as a covered healthcare provider running Epic it operates a live HL7 FHIR R4 patient-access
+  API — registered under "Select Medical" in Epic's public endpoint directory — that exposes 59 FHIR
+  resource types behind SMART-on-FHIR OAuth 2.0, together with an Epic MyChart patient portal. This
+  profile documents that regulated interoperability surface rather than a commercial API product.
 specificationVersion: '0.23'
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/select-medical-holdings.png
+url:
+  https://raw.githubusercontent.com/api-evangelist/select-medical-holdings/refs/heads/main/apis.yml
+created: '2026-03-24'
+modified: '2026-08-28'
+tags:
+  - Healthcare
+  - Hospitals
+  - Rehabilitation
+  - Patient Access
+  - FHIR
+  - Interoperability
+  - Electronic Health Records
+  - Fortune 1000
+deliveryModel:
+  model: managed
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Regulated patient-access interoperability endpoint, not a commercial API product
+  confidence: high
+  source:
+    - fhir
+    - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: none
+  onboarding: registration-required
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
+  label: No pricing — SMART-on-FHIR app registration and patient authorization required
+  confidence: high
+  source:
+    - authentication
+    - plans
+  generated: '2026-08-28'
   method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/select-medical-holdings.png
-tags:
-  - Fortune 1000
-url: 
-  https://raw.githubusercontent.com/api-evangelist/select-medical-holdings/refs/heads/main/apis.yml
-modified: '2026-03-24'
-apis: []
+apis:
+  - aid: select-medical-holdings:select-medical-holdings-fhir-r4
+    name: Select Medical FHIR R4 API
+    description: >-
+      Live HL7 FHIR R4 (4.0.1) patient-access API operated by Select Medical on its Epic platform
+      (community et0948, Epic software version November 2025). The server's own CapabilityStatement
+      self-identifies as "Select Medical FHIR Server" and declares 59 resource types, 702 search
+      parameters and 47 US Core 6.1.0 profiles, secured with SMART-on-FHIR OAuth 2.0. Registered as
+      "Select Medical" in Epic's public endpoint directory since 2024-11-09.
+    humanURL: https://mychart.selectmedical.com/MyChart/signup
+    baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+    tags:
+      - FHIR
+      - Patient Access
+      - US Core
+      - SMART on FHIR
+      - Healthcare
+    properties:
+      - type: OpenAPI
+        url: openapi/select-medical-holdings-fhir-r4-openapi.yml
+      - type: FHIR
+        url: fhir/select-medical-holdings-r4-capabilitystatement.json
+      - type: Authentication
+        url: authentication/select-medical-holdings-authentication.yml
+      - type: OAuthScopes
+        url: scopes/select-medical-holdings-scopes.yml
+      - type: ErrorCatalog
+        url: errors/select-medical-holdings-problem-types.yml
+      - type: Conventions
+        url: conventions/select-medical-holdings-conventions.yml
+      - type: DataModel
+        url: data-model/select-medical-holdings-data-model.yml
+      - type: FHIR Standard
+        url: https://hl7.org/fhir/R4/
+      - type: Registry
+        url: https://open.epic.com/Endpoints/R4
+  - aid: select-medical-holdings:select-medical-holdings-fhir-dstu2
+    name: Select Medical FHIR DSTU2 API
+    description: >-
+      Legacy HL7 FHIR DSTU2 (1.0.2) endpoint operated by Select Medical on the same Epic platform,
+      registered as "Select Medical" in Epic's public DSTU2 endpoint directory since 2020-06-01 and
+      still listed active. Retained for older certified applications; new integrations use the R4
+      endpoint.
+    humanURL: https://mychart.selectmedical.com/MyChart/signup
+    baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
+    tags:
+      - FHIR
+      - Patient Access
+      - Legacy
+      - Healthcare
+    properties:
+      - type: FHIR
+        url: fhir/select-medical-holdings-dstu2-capabilitystatement.json
+      - type: Registry
+        url: https://open.epic.com/Endpoints/DSTU2
 common:
+  - type: Website
+    url: https://www.selectmedical.com
   - type: LinkedIn
     url: https://www.linkedin.com/company/select-medical-holdings
-  - type: Website
-    url: https://www.select-medical-holdings.com
-description: >-
-  Select Medical Holdings is one of the largest operators of specialty hospitals,
-  outpatient rehabilitation clinics, and inpatient rehabilitation hospitals in the
-  United States.
+  - type: SignUp
+    url: https://mychart.selectmedical.com/MyChart/signup
+  - type: Login
+    url: https://mychart.selectmedical.com/MyChart/Authentication/Login
+  - type: WellKnown
+    url: well-known/select-medical-holdings-well-known.yml
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: Conformance
+    url: conformance/select-medical-holdings-conformance.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/select-medical-holdings-lifecycle.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: DomainSecurity
+    url: security/select-medical-holdings-domain-security.yml
+  - type: LLMsTxt
+    url: llms/select-medical-holdings-llms.txt
+  - type: Plans
+    url: plans/select-medical-holdings-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/select-medical-holdings-rate-limits.yml
+  - type: Packages
+    url: packages/select-medical-holdings-packages.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Overlay
+    url: overlays/select-medical-holdings-fhir-r4-overlay.yaml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+x-enrichment:
+  date: '2026-08-28'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

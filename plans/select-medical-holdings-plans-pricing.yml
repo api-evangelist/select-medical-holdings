@@ -1,0 +1,26 @@
+generated: '2026-08-28'
+method: searched
+source: >-
+  Searched for a Select Medical developer/pricing surface across www.selectmedical.com,
+  api./developer./developers.selectmedical.com and Epic's public endpoint directory
+plan_count: 0
+plans: []
+note: >-
+  Select Medical publishes no API plans and no API pricing, and that is the correct answer rather
+  than a gap. This is a regulated patient-access FHIR endpoint, not a commercial API product: under
+  the ONC Cures Act / 21st Century Cures information-blocking rules a covered provider may not
+  charge a patient or their designated app for access to their own records, so there is no price
+  list to publish. Access is granted by registering an application through Epic's vendor program and
+  having the health system enable it, not by purchasing a tier. No api./developer./developers
+  subdomain exists on selectmedical.com (all NXDOMAIN).
+commercial_model: none-api-is-regulated-patient-access
+x-evidence:
+  - url: https://api.selectmedical.com/
+    status: 0
+    note: NXDOMAIN — no such host
+  - url: https://developer.selectmedical.com/
+    status: 0
+    note: NXDOMAIN — no such host
+  - url: https://www.selectmedical.com/
+    status: 403
+    note: WAF challenge; same body returned for paths that do not exist

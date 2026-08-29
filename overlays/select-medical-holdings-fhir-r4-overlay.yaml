@@ -1,0 +1,83 @@
+# generated: '2026-08-28'
+# method: generated
+# source: openapi/select-medical-holdings-fhir-r4-openapi.yml
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Select Medical FHIR R4 API
+  version: 1.0.0
+extends: openapi/select-medical-holdings-fhir-r4-openapi.yml
+actions:
+  - target: $.info
+    description: >-
+      Record the provenance of this contract — it is derived from the provider's live
+      CapabilityStatement, not published as OpenAPI by Select Medical.
+    update:
+      x-apievangelist-provenance:
+        derived_from: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata
+        fetched: '2026-08-28'
+        http_status: 200
+        ownership_evidence: >-
+          CapabilityStatement.implementation.description = "Select Medical FHIR Server"; endpoint
+          registered as "Select Medical" in Epic's public directory at
+          https://open.epic.com/Endpoints/R4
+        publisher_of_original: Select Medical (on Epic community et0948)
+        note: Select Medical does not publish an OpenAPI document of its own.
+  - target: $.info
+    description: Flag the write-safety posture at the top of the contract.
+    update:
+      x-agent-write-safety:
+        idempotency: unsupported
+        conditional_create: false
+        conditional_update: false
+        delete_supported: false
+        dry_run: unsupported
+        reversibility: none
+        guidance: >-
+          Treat every create as permanent and at-most-once. A timed-out write cannot be safely
+          retried and cannot be undone through this API.
+  - target: $.info
+    description: Record the domain standard this contract implements.
+    update:
+      x-domain-standard:
+        id: us-core
+        name: HL7 US Core Implementation Guide
+        version: 6.1.0
+        base_standard: HL7 FHIR R4 (4.0.1)
+        launch_framework: SMART App Launch
+        profile_declarations: 47
+        resource_types_profiled: 24
+  - target: $.servers[0]
+    description: Note that the API host is the EHR vendor's, not the provider's own domain.
+    update:
+      x-host-ownership: >-
+        epicproxy.et0948.epichosted.com is Epic's hosting domain for Select Medical's instance
+        (community et0948). mychart.selectmedical.com — Select Medical's own domain — is a CNAME
+        into the same community, which is what ties this host to this company.
+  - target: $.components.securitySchemes.smartOnFhir
+    description: Record that credentials are not self-serve.
+    update:
+      x-onboarding:
+        self_serve: false
+        path: >-
+          Application registration runs through Epic's vendor program and must then be enabled by
+          Select Medical. An agent cannot obtain credentials from the endpoint alone.
+  - target: $.paths[*].post
+    description: Mark every create operation as irreversible for agent planning.
+    update:
+      x-agentic-access:
+        action_class: write
+        consequence: irreversible
+        escalation: human-approval-required
+        reason: >-
+          No delete, no conditional create and no idempotency key are declared, so a create cannot
+          be de-duplicated or undone through the API.
+  - target: $.paths[*].put
+    description: Mark every update operation as a compensating-write-only surface.
+    update:
+      x-agentic-access:
+        action_class: write
+        consequence: overwrites-clinical-record
+        escalation: human-approval-required
+        reason: >-
+          No ETag/If-Match optimistic concurrency is advertised, so a blind update can silently
+          clobber a concurrent change.

@@ -1,0 +1,69 @@
+generated: '2026-08-28'
+method: probed
+source: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+docs: https://fhir.epic.com/Documentation?docId=oauth2
+note: >-
+  scopes_supported is read verbatim from the server's own SMART discovery document (HTTP 200,
+  fetched 2026-08-28). IMPORTANT: this list is the set of NON-FHIR scopes the endpoint advertises.
+  SMART resource scopes (patient/*.read, user/*.read and the v2 patient/Observation.rs form) are NOT
+  enumerated in scopes_supported — Epic grants them per registered application — but the server does
+  declare permission-patient, permission-user, permission-v1 and permission-v2 among its SMART
+  capabilities, which is the machine-readable statement that those scope families are supported.
+  They are recorded below as `enumerated: false` so nothing here asserts a scope string the provider
+  did not publish.
+schemes:
+  - name: smartOnFhir
+    authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+    tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+    standard: SMART App Launch
+scopes:
+  - scope: openid
+    description: OpenID Connect authentication — returns an id_token identifying the end user.
+    enumerated: true
+    flows: [authorizationCode]
+  - scope: profile
+    description: Standard OpenID Connect profile claims for the authenticated user.
+    enumerated: true
+    flows: [authorizationCode]
+  - scope: fhirUser
+    description: >-
+      SMART scope returning a reference to the FHIR resource (Practitioner, Patient or RelatedPerson)
+      representing the authorized user.
+    enumerated: true
+    flows: [authorizationCode]
+  - scope: launch
+    description: >-
+      SMART EHR-launch context scope — lets an app launched from inside Epic inherit the current
+      patient and encounter context.
+    enumerated: true
+    flows: [authorizationCode]
+  - scope: epic.scanning.dmsusername
+    description: >-
+      Epic-proprietary scope carrying the document-management-system scanning username. Vendor-specific,
+      not part of the SMART specification.
+    enumerated: true
+    vendor_specific: true
+    flows: [authorizationCode]
+scope_families_declared:
+  - family: patient/*
+    enumerated: false
+    evidence: SMART capability "permission-patient" declared in smart-configuration
+    note: Patient-context resource scopes, granted per registered app rather than advertised.
+  - family: user/*
+    enumerated: false
+    evidence: SMART capability "permission-user" declared in smart-configuration
+    note: User-context resource scopes, granted per registered app.
+  - family: SMART v1 scope syntax
+    enumerated: false
+    evidence: SMART capability "permission-v1" declared in smart-configuration
+  - family: SMART v2 scope syntax
+    enumerated: false
+    evidence: SMART capability "permission-v2" declared in smart-configuration
+    note: v2 granular scopes (e.g. patient/Observation.rs) are supported.
+  - family: offline_access
+    enumerated: false
+    evidence: SMART capability "permission-offline" declared; refresh_token grant type supported
+x-evidence:
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+    http_status: 200
+    fetched: '2026-08-28'

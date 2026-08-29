@@ -1,0 +1,76 @@
+generated: '2026-08-28'
+method: probed
+source: live probes of every apis.yml baseURL host, the corporate host and the patient-portal host
+note: >-
+  Two real discovery documents are served, both on the FHIR host and both under the FHIR base path
+  rather than the domain root: the SMART App Launch configuration and an OpenID Connect discovery
+  document. The domain root of the FHIR host answers 503 to every /.well-known/ path (the Epic edge
+  only routes /FhirProxy/*), and www.selectmedical.com answers 403 to every path including paths that
+  do not exist, so nothing there is readable by a machine. The corporate site is behind a WAF that
+  does not discriminate real paths from missing ones — recorded as blocked, not as absent.
+hosts:
+  - host: epicproxy.et0948.epichosted.com
+    documents:
+      - path: /FhirProxy/api/FHIR/R4/.well-known/smart-configuration
+        status: 200
+        content_type: application/json; charset=utf-8
+        file: select-medical-holdings-smart-configuration.json
+        description: SMART App Launch discovery document for the FHIR R4 endpoint.
+      - path: /FhirProxy/oauth2/.well-known/openid-configuration
+        status: 200
+        content_type: application/json; charset=utf-8
+        file: select-medical-holdings-openid-configuration.json
+        description: OpenID Connect discovery document for the FhirProxy OAuth 2.0 issuer.
+      - path: /.well-known/security.txt
+        status: 503
+      - path: /.well-known/openid-configuration
+        status: 503
+      - path: /.well-known/oauth-authorization-server
+        status: 503
+      - path: /.well-known/api-catalog
+        status: 503
+      - path: /.well-known/agent-card.json
+        status: 503
+      - path: /.well-known/agent.json
+        status: 503
+      - path: /FhirProxy/api/FHIR/R4/.well-known/oauth-authorization-server
+        status: 404
+      - path: /FhirProxy/api/FHIR/R4/.well-known/oauth-protected-resource
+        status: 404
+      - path: /FhirProxy/api/FHIR/DSTU2/.well-known/smart-configuration
+        status: 404
+  - host: www.selectmedical.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        note: WAF challenge; the same 403 body is returned for paths that do not exist.
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+      - path: /llms.txt
+        status: 403
+  - host: mychart.selectmedical.com
+    documents:
+      - path: /.well-known/smart-configuration
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /robots.txt
+        status: 404

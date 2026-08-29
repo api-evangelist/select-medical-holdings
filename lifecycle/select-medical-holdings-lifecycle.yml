@@ -1,0 +1,72 @@
+generated: '2026-08-28'
+method: derived
+source: >-
+  fhir/select-medical-holdings-r4-capabilitystatement.json,
+  fhir/select-medical-holdings-dstu2-capabilitystatement.json, and Epic's public endpoint directory
+note: >-
+  Select Medical publishes no versioning policy, deprecation policy, SLA or status page of its own.
+  The lifecycle facts recorded here are the ones its server and Epic's public registry actually
+  state. The platform release cadence is Epic's, not Select Medical's.
+versioning:
+  scheme: fhir-release-in-path
+  current_version: R4 (4.0.1)
+  current_base: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  previous_version: DSTU2 (1.0.2)
+  previous_base: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
+  policy_published: false
+platform:
+  vendor: Epic Systems
+  software: Epic
+  version: November 2025
+  release_date: '2026-07-24'
+  community_id: et0948
+  evidence: CapabilityStatement.software (identical in both the R4 and DSTU2 documents)
+  note: >-
+    Epic ships quarterly-named versions; the FHIR surface tracks the health system's upgrade
+    schedule, which Select Medical does not publish.
+versions:
+  - version: R4 (4.0.1)
+    status: current
+    listed_active: true
+    registry_active_since: '2024-11-09'
+    resource_types: 59
+    registry: https://open.epic.com/Endpoints/R4
+  - version: DSTU2 (1.0.2)
+    status: legacy
+    listed_active: true
+    registry_active_since: '2020-06-01'
+    resource_types: 17
+    registry: https://open.epic.com/Endpoints/DSTU2
+    note: >-
+      Still listed active in Epic's public directory as of 2026-08-28. HL7 superseded DSTU2 in 2015,
+      so this is a long-lived legacy surface, but Select Medical has published no sunset date for it.
+deprecation:
+  policy_published: false
+  sunset_header: not-observed
+  deprecation_header: not-observed
+  deprecated_operations: []
+  evidence: >-
+    No RFC 8594 Sunset or Deprecation header was returned on the metadata responses for either
+    version, and no deprecation notice appears in either CapabilityStatement. DSTU2 is superseded by
+    R4 in practice but is not marked deprecated by the provider.
+status_page:
+  published: false
+  url: null
+  note: >-
+    No status page was found for the FHIR endpoint or the MyChart portal. Epic-hosted community
+    instances do not publish per-customer status pages, and Select Medical publishes none.
+sla:
+  published: false
+  note: No availability or support SLA is published for this endpoint.
+support:
+  channel: not-published-for-developers
+  note: >-
+    There is no developer support channel. App enablement for this endpoint runs through Epic's
+    vendor program plus the health system, not through a Select Medical developer portal.
+x-evidence:
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata
+    http_status: 200
+  - url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2/metadata
+    http_status: 200
+  - url: https://open.epic.com/Endpoints/DSTU2
+    http_status: 200

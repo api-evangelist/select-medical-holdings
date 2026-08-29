@@ -1,0 +1,1267 @@
+generated: '2026-08-28'
+method: derived
+source: fhir/select-medical-holdings-r4-capabilitystatement.json
+note: Entity graph derived from the resource types and the REFERENCE-typed search parameters the Select
+  Medical FHIR server declares. A relationship is asserted only where the declared reference parameter
+  name maps unambiguously onto a resource type this same server serves — reference params whose target
+  is ambiguous or not served here are counted but not turned into an edge, so the graph understates rather
+  than invents. Field-level structure is defined by HL7 FHIR R4 and the declared US Core 6.1.0 profiles,
+  not by anything Select Medical publishes.
+model: HL7 FHIR R4 (4.0.1)
+profile_pack: US Core 6.1.0
+identifier_scheme:
+  style: fhir-logical-id
+  note: Opaque server-assigned logical ids in the URL path; no typed id prefixes. Business identifiers
+    are carried in Resource.identifier and searchable via the identifier parameter.
+counts:
+  entities: 59
+  relationships: 152
+  entities_with_us_core_profiles: 24
+  total_search_params: 702
+  total_reference_params: 250
+core_entities:
+- Patient
+- Encounter
+- Observation
+- Condition
+- MedicationRequest
+- DocumentReference
+- Practitioner
+- Organization
+entities:
+- name: Account
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: AdverseEvent
+  interactions:
+  - read
+  - search-type
+  search_params: 15
+  reference_params: 7
+  us_core_profiles: []
+- name: AllergyIntolerance
+  interactions:
+  - create
+  - read
+  - search-type
+  search_params: 18
+  reference_params: 3
+  us_core_profiles:
+  - us-core-allergyintolerance|6.1.0
+- name: Appointment
+  interactions:
+  - read
+  - search-type
+  search_params: 20
+  reference_params: 8
+  us_core_profiles: []
+- name: Binary
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: BodyStructure
+  interactions:
+  - create
+  - read
+  - search-type
+  - update
+  search_params: 7
+  reference_params: 2
+  us_core_profiles: []
+- name: CarePlan
+  interactions:
+  - read
+  - search-type
+  search_params: 21
+  reference_params: 12
+  us_core_profiles:
+  - us-core-careplan|6.1.0
+- name: CareTeam
+  interactions:
+  - read
+  - search-type
+  search_params: 10
+  reference_params: 4
+  us_core_profiles:
+  - us-core-careteam|6.1.0
+- name: Claim
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: Communication
+  interactions:
+  - create
+  - read
+  - search-type
+  search_params: 16
+  reference_params: 8
+  us_core_profiles: []
+- name: ConceptMap
+  interactions:
+  - create
+  - read
+  search_params: 0
+  reference_params: 0
+  us_core_profiles: []
+- name: Condition
+  interactions:
+  - create
+  - read
+  - search-type
+  search_params: 21
+  reference_params: 5
+  us_core_profiles:
+  - us-core-condition-encounter-diagnosis|6.1.0
+  - us-core-condition-problems-health-concerns|6.1.0
+- name: Consent
+  interactions:
+  - read
+  - search-type
+  search_params: 18
+  reference_params: 7
+  us_core_profiles: []
+- name: Contract
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: Coverage
+  interactions:
+  - read
+  - search-type
+  search_params: 13
+  reference_params: 5
+  us_core_profiles:
+  - us-core-coverage|6.1.0
+- name: Device
+  interactions:
+  - read
+  - search-type
+  search_params: 13
+  reference_params: 3
+  us_core_profiles:
+  - us-core-implantable-device|6.1.0
+- name: DeviceRequest
+  interactions:
+  - read
+  - search-type
+  search_params: 19
+  reference_params: 10
+  us_core_profiles: []
+- name: DeviceUseStatement
+  interactions:
+  - read
+  - search-type
+  search_params: 6
+  reference_params: 3
+  us_core_profiles: []
+- name: DiagnosticReport
+  interactions:
+  - read
+  - search-type
+  - update
+  search_params: 18
+  reference_params: 9
+  us_core_profiles:
+  - us-core-diagnosticreport-lab|6.1.0
+  - us-core-diagnosticreport-note|6.1.0
+- name: DocumentReference
+  interactions:
+  - create
+  - read
+  - search-type
+  - update
+  search_params: 27
+  reference_params: 8
+  us_core_profiles:
+  - us-core-documentreference|6.1.0
+- name: Encounter
+  interactions:
+  - read
+  - search-type
+  search_params: 25
+  reference_params: 13
+  us_core_profiles:
+  - us-core-encounter|6.1.0
+- name: Endpoint
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: EpisodeOfCare
+  interactions:
+  - read
+  - search-type
+  search_params: 11
+  reference_params: 5
+  us_core_profiles: []
+- name: ExplanationOfBenefit
+  interactions:
+  - read
+  - search-type
+  search_params: 20
+  reference_params: 13
+  us_core_profiles: []
+- name: FamilyMemberHistory
+  interactions:
+  - read
+  - search-type
+  search_params: 10
+  reference_params: 2
+  us_core_profiles: []
+- name: Flag
+  interactions:
+  - read
+  - search-type
+  search_params: 10
+  reference_params: 4
+  us_core_profiles: []
+- name: Goal
+  interactions:
+  - read
+  - search-type
+  search_params: 10
+  reference_params: 2
+  us_core_profiles:
+  - us-core-goal|6.1.0
+- name: Group
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: ImagingStudy
+  interactions:
+  - read
+  - search-type
+  search_params: 19
+  reference_params: 8
+  us_core_profiles: []
+- name: Immunization
+  interactions:
+  - read
+  - search-type
+  search_params: 18
+  reference_params: 6
+  us_core_profiles:
+  - us-core-immunization|6.1.0
+- name: ImmunizationRecommendation
+  interactions:
+  - read
+  - search-type
+  search_params: 10
+  reference_params: 3
+  us_core_profiles: []
+- name: List
+  interactions:
+  - read
+  - search-type
+  search_params: 14
+  reference_params: 5
+  us_core_profiles: []
+- name: Location
+  interactions:
+  - read
+  - search-type
+  search_params: 16
+  reference_params: 3
+  us_core_profiles: []
+- name: Measure
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: MeasureReport
+  interactions:
+  - read
+  - search-type
+  search_params: 13
+  reference_params: 5
+  us_core_profiles: []
+- name: Media
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: Medication
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles:
+  - us-core-medication|6.1.0
+- name: MedicationAdministration
+  interactions:
+  - read
+  - search-type
+  search_params: 15
+  reference_params: 7
+  us_core_profiles: []
+- name: MedicationDispense
+  interactions:
+  - read
+  - search-type
+  search_params: 18
+  reference_params: 9
+  us_core_profiles:
+  - us-core-medicationdispense|6.1.0
+- name: MedicationRequest
+  interactions:
+  - read
+  - search-type
+  search_params: 18
+  reference_params: 7
+  us_core_profiles:
+  - us-core-medicationrequest|6.1.0
+- name: NutritionOrder
+  interactions:
+  - read
+  - search-type
+  search_params: 13
+  reference_params: 4
+  us_core_profiles: []
+- name: Observation
+  interactions:
+  - create
+  - read
+  - search-type
+  - update
+  search_params: 30
+  reference_params: 11
+  us_core_profiles:
+  - head-occipital-frontal-circumference-percentile|6.1.0
+  - pediatric-bmi-for-age|6.1.0
+  - pediatric-weight-for-height|6.1.0
+  - us-core-blood-pressure|6.1.0
+  - us-core-bmi|6.1.0
+  - us-core-body-height|6.1.0
+  - us-core-body-temperature|6.1.0
+  - us-core-body-weight|6.1.0
+  - us-core-head-circumference|6.1.0
+  - us-core-heart-rate|6.1.0
+  - us-core-observation-clinical-result|6.1.0
+  - us-core-observation-lab|6.1.0
+  - us-core-observation-occupation|6.1.0
+  - us-core-observation-pregnancyintent|6.1.0
+  - us-core-observation-pregnancystatus|6.1.0
+  - us-core-observation-screening-assessment|6.1.0
+  - us-core-observation-sexual-orientation|6.1.0
+  - us-core-pulse-oximetry|6.1.0
+  - us-core-respiratory-rate|6.1.0
+  - us-core-simple-observation|6.1.0
+  - us-core-smokingstatus|6.1.0
+  - us-core-vital-signs|6.1.0
+- name: Organization
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles:
+  - us-core-organization|6.1.0
+- name: Patient
+  interactions:
+  - create
+  - read
+  - search-type
+  search_params: 30
+  reference_params: 3
+  us_core_profiles:
+  - us-core-patient|6.1.0
+- name: Practitioner
+  interactions:
+  - read
+  - search-type
+  search_params: 19
+  reference_params: 0
+  us_core_profiles:
+  - us-core-practitioner|6.1.0
+- name: PractitionerRole
+  interactions:
+  - read
+  - search-type
+  search_params: 15
+  reference_params: 5
+  us_core_profiles:
+  - us-core-practitionerrole|6.1.0
+- name: Procedure
+  interactions:
+  - create
+  - read
+  - search-type
+  - update
+  search_params: 17
+  reference_params: 9
+  us_core_profiles:
+  - us-core-procedure|6.1.0
+- name: Provenance
+  interactions:
+  - read
+  search_params: 0
+  reference_params: 0
+  us_core_profiles:
+  - us-core-provenance|6.1.0
+- name: Questionnaire
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: QuestionnaireResponse
+  interactions:
+  - create
+  - read
+  - search-type
+  search_params: 13
+  reference_params: 8
+  us_core_profiles: []
+- name: RelatedPerson
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles:
+  - us-core-relatedperson|6.1.0
+- name: RequestGroup
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: ResearchStudy
+  interactions:
+  - read
+  - search-type
+  search_params: 15
+  reference_params: 5
+  us_core_profiles: []
+- name: ResearchSubject
+  interactions:
+  - read
+  - search-type
+  search_params: 7
+  reference_params: 2
+  us_core_profiles: []
+- name: ServiceRequest
+  interactions:
+  - create
+  - read
+  - search-type
+  - update
+  search_params: 23
+  reference_params: 9
+  us_core_profiles:
+  - us-core-servicerequest|6.1.0
+- name: Specimen
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles:
+  - us-core-specimen|6.1.0
+- name: Substance
+  interactions:
+  - read
+  - search-type
+  search_params: 2
+  reference_params: 0
+  us_core_profiles: []
+- name: Task
+  interactions:
+  - read
+  - search-type
+  - update
+  search_params: 21
+  reference_params: 8
+  us_core_profiles: []
+- name: ValueSet
+  interactions:
+  - read
+  search_params: 0
+  reference_params: 0
+  us_core_profiles: []
+relationships:
+- from: AdverseEvent
+  to: ResearchSubject
+  type: belongs_to
+  via: research-subject
+  evidence: searchParam 'research-subject' (type reference) declared on AdverseEvent
+- from: AdverseEvent
+  to: ResearchStudy
+  type: belongs_to
+  via: study
+  evidence: searchParam 'study' (type reference) declared on AdverseEvent
+- from: AdverseEvent
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on AdverseEvent
+- from: AdverseEvent
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on AdverseEvent
+- from: AdverseEvent
+  to: Practitioner
+  type: belongs_to
+  via: recorder
+  evidence: searchParam 'recorder' (type reference) declared on AdverseEvent
+- from: AllergyIntolerance
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on AllergyIntolerance
+- from: AllergyIntolerance
+  to: Practitioner
+  type: belongs_to
+  via: asserter
+  evidence: searchParam 'asserter' (type reference) declared on AllergyIntolerance
+- from: AllergyIntolerance
+  to: Practitioner
+  type: belongs_to
+  via: recorder
+  evidence: searchParam 'recorder' (type reference) declared on AllergyIntolerance
+- from: Appointment
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Appointment
+- from: Appointment
+  to: Practitioner
+  type: belongs_to
+  via: actor
+  evidence: searchParam 'actor' (type reference) declared on Appointment
+- from: Appointment
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Appointment
+- from: Appointment
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on Appointment
+- from: Appointment
+  to: Practitioner
+  type: belongs_to
+  via: practitioner
+  evidence: searchParam 'practitioner' (type reference) declared on Appointment
+- from: BodyStructure
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on BodyStructure
+- from: BodyStructure
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on BodyStructure
+- from: CarePlan
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on CarePlan
+- from: CarePlan
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on CarePlan
+- from: CarePlan
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on CarePlan
+- from: CarePlan
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on CarePlan
+- from: CarePlan
+  to: CareTeam
+  type: belongs_to
+  via: care-team
+  evidence: searchParam 'care-team' (type reference) declared on CarePlan
+- from: CarePlan
+  to: Condition
+  type: belongs_to
+  via: condition
+  evidence: searchParam 'condition' (type reference) declared on CarePlan
+- from: CarePlan
+  to: Goal
+  type: belongs_to
+  via: goal
+  evidence: searchParam 'goal' (type reference) declared on CarePlan
+- from: CarePlan
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on CarePlan
+- from: CareTeam
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on CareTeam
+- from: CareTeam
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on CareTeam
+- from: CareTeam
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on CareTeam
+- from: CareTeam
+  to: Practitioner
+  type: belongs_to
+  via: participant
+  evidence: searchParam 'participant' (type reference) declared on CareTeam
+- from: Communication
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Communication
+- from: Communication
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Communication
+- from: Communication
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Communication
+- from: Communication
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Communication
+- from: Condition
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Condition
+- from: Condition
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Condition
+- from: Condition
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Condition
+- from: Condition
+  to: Practitioner
+  type: belongs_to
+  via: asserter
+  evidence: searchParam 'asserter' (type reference) declared on Condition
+- from: Consent
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Consent
+- from: Consent
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Consent
+- from: Consent
+  to: Practitioner
+  type: belongs_to
+  via: actor
+  evidence: searchParam 'actor' (type reference) declared on Consent
+- from: Consent
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on Consent
+- from: Coverage
+  to: Patient
+  type: belongs_to
+  via: beneficiary
+  evidence: searchParam 'beneficiary' (type reference) declared on Coverage
+- from: Coverage
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Coverage
+- from: Coverage
+  to: Organization
+  type: belongs_to
+  via: payor
+  evidence: searchParam 'payor' (type reference) declared on Coverage
+- from: Device
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Device
+- from: Device
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on Device
+- from: Device
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on Device
+- from: DeviceRequest
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: Device
+  type: belongs_to
+  via: device
+  evidence: searchParam 'device' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: Practitioner
+  type: belongs_to
+  via: requester
+  evidence: searchParam 'requester' (type reference) declared on DeviceRequest
+- from: DeviceRequest
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on DeviceRequest
+- from: DeviceUseStatement
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on DeviceUseStatement
+- from: DeviceUseStatement
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on DeviceUseStatement
+- from: DeviceUseStatement
+  to: Device
+  type: belongs_to
+  via: device
+  evidence: searchParam 'device' (type reference) declared on DeviceUseStatement
+- from: DiagnosticReport
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: Observation
+  type: belongs_to
+  via: result
+  evidence: searchParam 'result' (type reference) declared on DiagnosticReport
+- from: DiagnosticReport
+  to: Specimen
+  type: belongs_to
+  via: specimen
+  evidence: searchParam 'specimen' (type reference) declared on DiagnosticReport
+- from: DocumentReference
+  to: Practitioner
+  type: belongs_to
+  via: author
+  evidence: searchParam 'author' (type reference) declared on DocumentReference
+- from: DocumentReference
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on DocumentReference
+- from: DocumentReference
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on DocumentReference
+- from: DocumentReference
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on DocumentReference
+- from: Encounter
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Encounter
+- from: Encounter
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Encounter
+- from: Encounter
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Encounter
+- from: Encounter
+  to: EpisodeOfCare
+  type: belongs_to
+  via: episode-of-care
+  evidence: searchParam 'episode-of-care' (type reference) declared on Encounter
+- from: Encounter
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on Encounter
+- from: Encounter
+  to: Practitioner
+  type: belongs_to
+  via: participant
+  evidence: searchParam 'participant' (type reference) declared on Encounter
+- from: Encounter
+  to: Practitioner
+  type: belongs_to
+  via: practitioner
+  evidence: searchParam 'practitioner' (type reference) declared on Encounter
+- from: EpisodeOfCare
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on EpisodeOfCare
+- from: EpisodeOfCare
+  to: Condition
+  type: belongs_to
+  via: condition
+  evidence: searchParam 'condition' (type reference) declared on EpisodeOfCare
+- from: EpisodeOfCare
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on EpisodeOfCare
+- from: ExplanationOfBenefit
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on ExplanationOfBenefit
+- from: ExplanationOfBenefit
+  to: CareTeam
+  type: belongs_to
+  via: care-team
+  evidence: searchParam 'care-team' (type reference) declared on ExplanationOfBenefit
+- from: ExplanationOfBenefit
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on ExplanationOfBenefit
+- from: FamilyMemberHistory
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on FamilyMemberHistory
+- from: Flag
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Flag
+- from: Flag
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Flag
+- from: Flag
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Flag
+- from: Flag
+  to: Practitioner
+  type: belongs_to
+  via: author
+  evidence: searchParam 'author' (type reference) declared on Flag
+- from: Goal
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Goal
+- from: Goal
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Goal
+- from: ImagingStudy
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on ImagingStudy
+- from: ImagingStudy
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on ImagingStudy
+- from: ImagingStudy
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on ImagingStudy
+- from: ImagingStudy
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on ImagingStudy
+- from: Immunization
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Immunization
+- from: Immunization
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on Immunization
+- from: Immunization
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on Immunization
+- from: ImmunizationRecommendation
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on ImmunizationRecommendation
+- from: List
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on List
+- from: List
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on List
+- from: List
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on List
+- from: Location
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on Location
+- from: MeasureReport
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on MeasureReport
+- from: MeasureReport
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on MeasureReport
+- from: MedicationAdministration
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on MedicationAdministration
+- from: MedicationAdministration
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on MedicationAdministration
+- from: MedicationAdministration
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on MedicationAdministration
+- from: MedicationAdministration
+  to: Device
+  type: belongs_to
+  via: device
+  evidence: searchParam 'device' (type reference) declared on MedicationAdministration
+- from: MedicationAdministration
+  to: Medication
+  type: belongs_to
+  via: medication
+  evidence: searchParam 'medication' (type reference) declared on MedicationAdministration
+- from: MedicationDispense
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on MedicationDispense
+- from: MedicationDispense
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on MedicationDispense
+- from: MedicationDispense
+  to: Medication
+  type: belongs_to
+  via: medication
+  evidence: searchParam 'medication' (type reference) declared on MedicationDispense
+- from: MedicationDispense
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on MedicationDispense
+- from: MedicationRequest
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on MedicationRequest
+- from: MedicationRequest
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on MedicationRequest
+- from: MedicationRequest
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on MedicationRequest
+- from: MedicationRequest
+  to: Medication
+  type: belongs_to
+  via: medication
+  evidence: searchParam 'medication' (type reference) declared on MedicationRequest
+- from: MedicationRequest
+  to: Practitioner
+  type: belongs_to
+  via: requester
+  evidence: searchParam 'requester' (type reference) declared on MedicationRequest
+- from: NutritionOrder
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on NutritionOrder
+- from: NutritionOrder
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on NutritionOrder
+- from: Observation
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Observation
+- from: Observation
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Observation
+- from: Observation
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Observation
+- from: Observation
+  to: Device
+  type: belongs_to
+  via: device
+  evidence: searchParam 'device' (type reference) declared on Observation
+- from: Observation
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Observation
+- from: Observation
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on Observation
+- from: Observation
+  to: Specimen
+  type: belongs_to
+  via: specimen
+  evidence: searchParam 'specimen' (type reference) declared on Observation
+- from: Patient
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on Patient
+- from: PractitionerRole
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on PractitionerRole
+- from: PractitionerRole
+  to: Organization
+  type: belongs_to
+  via: organization
+  evidence: searchParam 'organization' (type reference) declared on PractitionerRole
+- from: PractitionerRole
+  to: Practitioner
+  type: belongs_to
+  via: practitioner
+  evidence: searchParam 'practitioner' (type reference) declared on PractitionerRole
+- from: Procedure
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Procedure
+- from: Procedure
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Procedure
+- from: Procedure
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Procedure
+- from: Procedure
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Procedure
+- from: Procedure
+  to: Location
+  type: belongs_to
+  via: location
+  evidence: searchParam 'location' (type reference) declared on Procedure
+- from: Procedure
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on Procedure
+- from: QuestionnaireResponse
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on QuestionnaireResponse
+- from: QuestionnaireResponse
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on QuestionnaireResponse
+- from: QuestionnaireResponse
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on QuestionnaireResponse
+- from: QuestionnaireResponse
+  to: Practitioner
+  type: belongs_to
+  via: author
+  evidence: searchParam 'author' (type reference) declared on QuestionnaireResponse
+- from: QuestionnaireResponse
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on QuestionnaireResponse
+- from: ResearchSubject
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on ResearchSubject
+- from: ResearchSubject
+  to: ResearchStudy
+  type: belongs_to
+  via: study
+  evidence: searchParam 'study' (type reference) declared on ResearchSubject
+- from: ServiceRequest
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: Practitioner
+  type: belongs_to
+  via: requester
+  evidence: searchParam 'requester' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: Practitioner
+  type: belongs_to
+  via: performer
+  evidence: searchParam 'performer' (type reference) declared on ServiceRequest
+- from: ServiceRequest
+  to: Specimen
+  type: belongs_to
+  via: specimen
+  evidence: searchParam 'specimen' (type reference) declared on ServiceRequest
+- from: Task
+  to: Encounter
+  type: belongs_to
+  via: encounter
+  evidence: searchParam 'encounter' (type reference) declared on Task
+- from: Task
+  to: Patient
+  type: belongs_to
+  via: patient
+  evidence: searchParam 'patient' (type reference) declared on Task
+- from: Task
+  to: Patient
+  type: belongs_to
+  via: subject
+  evidence: searchParam 'subject' (type reference) declared on Task
+- from: Task
+  to: ServiceRequest
+  type: belongs_to
+  via: based-on
+  evidence: searchParam 'based-on' (type reference) declared on Task
+- from: Task
+  to: Practitioner
+  type: belongs_to
+  via: requester
+  evidence: searchParam 'requester' (type reference) declared on Task

@@ -1,0 +1,100 @@
+generated: '2026-08-28'
+method: derived
+source: >-
+  fhir/select-medical-holdings-r4-capabilitystatement.json and the HL7 FHIR R4 RESTful specification
+  the server declares conformance to (fhirVersion 4.0.1)
+format: fhir-operationoutcome
+note: >-
+  This server does NOT use RFC 9457 application/problem+json. FHIR defines its own error envelope,
+  OperationOutcome, and that is what an agent must parse. The envelope shape and the issue-type
+  vocabulary below are fixed by FHIR R4 (which the server declares conformance to); the HTTP status
+  mapping is the FHIR RESTful binding. Select Medical publishes no separate error reference of its
+  own, so per-code remediation text is not asserted here.
+envelope:
+  media_type: application/fhir+json
+  resource_type: OperationOutcome
+  fields:
+    - path: issue[].severity
+      values: [fatal, error, warning, information]
+    - path: issue[].code
+      description: Machine-readable issue type from the FHIR issue-type value set.
+      value_set: http://hl7.org/fhir/ValueSet/issue-type
+    - path: issue[].details.coding[]
+      description: >-
+        Vendor-specific coding. Epic returns its own numeric diagnostic codes here; the values are
+        not published in any document Select Medical serves, so they are not enumerated.
+    - path: issue[].diagnostics
+      description: Human-readable diagnostic text.
+    - path: issue[].expression
+      description: FHIRPath expression locating the offending element.
+  example_shape: |
+    {
+      "resourceType": "OperationOutcome",
+      "issue": [
+        {
+          "severity": "error",
+          "code": "not-found",
+          "diagnostics": "No resource of this type with that id."
+        }
+      ]
+    }
+problem_types:
+  - status: 400
+    code: invalid
+    title: Invalid request
+    description: The request body or a search parameter failed FHIR validation.
+    remediation: Validate the resource against the declared US Core 6.1.0 profile before resubmitting.
+    applies_to: [create, update, search-type]
+  - status: 400
+    code: structure
+    title: Structural issue
+    description: The submitted resource is not well-formed FHIR.
+    applies_to: [create, update]
+  - status: 401
+    code: login
+    title: Authentication required
+    description: >-
+      No access token, or an expired/invalid one. The endpoint is SMART-on-FHIR OAuth 2.0 only;
+      there is no anonymous read path to any clinical resource.
+    remediation: >-
+      Obtain a token from the token endpoint declared in .well-known/smart-configuration. Refresh
+      tokens are supported (permission-offline).
+    applies_to: [read, search-type, create, update]
+  - status: 403
+    code: forbidden
+    title: Insufficient scope
+    description: >-
+      The token is valid but does not carry a scope covering this resource type or this patient's
+      compartment.
+    remediation: Re-authorize requesting the required patient/ or user/ resource scope.
+    applies_to: [read, search-type, create, update]
+  - status: 404
+    code: not-found
+    title: Resource not found
+    description: No resource of the requested type exists with that logical id.
+    applies_to: [read, update]
+  - status: 405
+    code: not-supported
+    title: Interaction not supported
+    description: >-
+      The interaction is not declared for this resource type. Notably delete is not supported on any
+      of the 59 resource types, and update is declared on only 7.
+    applies_to: [delete, update]
+  - status: 422
+    code: processing
+    title: Business rule violation
+    description: Well-formed request rejected by a server-side clinical or business rule.
+    applies_to: [create, update]
+  - status: 429
+    code: throttled
+    title: Rate limited
+    description: >-
+      FHIR maps throttling to this status. Select Medical publishes no rate-limit figures and the
+      server returns no RateLimit headers on the anonymous metadata probe, so the trigger threshold
+      is unknown — see rate-limits/select-medical-holdings-rate-limits.yml.
+    applies_to: [read, search-type, create, update]
+  - status: 500
+    code: exception
+    title: Server error
+    description: Unexpected server-side failure.
+    applies_to: [read, search-type, create, update]

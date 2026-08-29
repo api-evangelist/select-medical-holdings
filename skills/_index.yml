@@ -1,0 +1,23 @@
+generated: '2026-08-28'
+method: generated
+source: openapi/select-medical-holdings-fhir-r4-openapi.yml
+note: >-
+  Agent Skills authored by API Evangelist from the Select Medical FHIR R4 contract. Select Medical
+  publishes no skills or AGENTS.md of its own. Every operationId referenced was verified present in
+  the derived OpenAPI before the skill was written.
+skills:
+  - name: select-medical-patient-clinical-summary
+    file: select-medical-holdings-patient-clinical-summary.md
+    description: Read-only clinical summary for one authorized patient.
+    surface: read
+    operations: [searchPatient, readPatient, searchCondition, searchMedicationRequest, searchAllergyIntolerance, searchObservation, searchEncounter]
+  - name: select-medical-clinical-document-retrieval
+    file: select-medical-holdings-clinical-document-retrieval.md
+    description: Find clinical notes and resolve DocumentReference attachments to Binary content.
+    surface: read
+    operations: [searchPatient, searchDocumentReference, readDocumentReference, readBinary, searchDiagnosticReport]
+  - name: select-medical-write-safety
+    file: select-medical-holdings-write-safety.md
+    description: Mandatory pre-flight checks before any write; the API has no delete, no idempotency and no validate.
+    surface: guardrail
+    operations: [searchPatient, searchAllergyIntolerance, searchCondition]

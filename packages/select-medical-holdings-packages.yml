@@ -1,0 +1,26 @@
+generated: '2026-08-28'
+method: searched
+source: >-
+  Searched npm, PyPI, RubyGems, Maven Central, NuGet, crates.io, pkg.go.dev and Packagist for a
+  first-party Select Medical client library, plus the corporate site for any SDK or download page
+package_count: 0
+packages: []
+official_sdk_count: 0
+note: >-
+  Select Medical publishes no client libraries in any registry, which is expected: it is a hospital
+  operator consuming a vendor EHR platform, not a software vendor. Applications integrate with this
+  endpoint using generic third-party SMART-on-FHIR client libraries — for example the HL7 community
+  fhirclient (Python/JS) or HAPI FHIR (Java) — none of which are authored, published or endorsed by
+  Select Medical, so none are listed here as first-party. No SDKs pointer is emitted in apis.yml
+  because there is no first-party SDK to point at.
+third_party_ecosystem:
+  note: >-
+    Recorded for context only; these are NOT Select Medical packages and are deliberately not
+    counted in package_count or wired as SDKs.
+  examples:
+    - name: HAPI FHIR
+      language: Java
+      relationship: third-party, HL7 community
+    - name: fhirclient
+      language: Python / JavaScript
+      relationship: third-party, SMART Health IT
