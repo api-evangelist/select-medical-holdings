@@ -50,60 +50,1644 @@ accessModel:
   generated: '2026-08-28'
   method: derived
 apis:
-  - aid: select-medical-holdings:select-medical-holdings-fhir-r4
-    name: Select Medical FHIR R4 API
-    description: >-
-      Live HL7 FHIR R4 (4.0.1) patient-access API operated by Select Medical on its Epic platform
-      (community et0948, Epic software version November 2025). The server's own CapabilityStatement
-      self-identifies as "Select Medical FHIR Server" and declares 59 resource types, 702 search
-      parameters and 47 US Core 6.1.0 profiles, secured with SMART-on-FHIR OAuth 2.0. Registered as
-      "Select Medical" in Epic's public endpoint directory since 2024-11-09.
-    humanURL: https://mychart.selectmedical.com/MyChart/signup
-    baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
-    tags:
-      - FHIR
-      - Patient Access
-      - US Core
-      - SMART on FHIR
-      - Healthcare
-    properties:
-      - type: OpenAPI
-        url: openapi/select-medical-holdings-fhir-r4-openapi.yml
-      - type: FHIR
-        url: fhir/select-medical-holdings-r4-capabilitystatement.json
-      - type: Authentication
-        url: authentication/select-medical-holdings-authentication.yml
-      - type: OAuthScopes
-        url: scopes/select-medical-holdings-scopes.yml
-      - type: ErrorCatalog
-        url: errors/select-medical-holdings-problem-types.yml
-      - type: Conventions
-        url: conventions/select-medical-holdings-conventions.yml
-      - type: DataModel
-        url: data-model/select-medical-holdings-data-model.yml
-      - type: FHIR Standard
-        url: https://hl7.org/fhir/R4/
-      - type: Registry
-        url: https://open.epic.com/Endpoints/R4
-  - aid: select-medical-holdings:select-medical-holdings-fhir-dstu2
-    name: Select Medical FHIR DSTU2 API
-    description: >-
-      Legacy HL7 FHIR DSTU2 (1.0.2) endpoint operated by Select Medical on the same Epic platform,
-      registered as "Select Medical" in Epic's public DSTU2 endpoint directory since 2020-06-01 and
-      still listed active. Retained for older certified applications; new integrations use the R4
-      endpoint.
-    humanURL: https://mychart.selectmedical.com/MyChart/signup
-    baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
-    tags:
-      - FHIR
-      - Patient Access
-      - Legacy
-      - Healthcare
-    properties:
-      - type: FHIR
-        url: fhir/select-medical-holdings-dstu2-capabilitystatement.json
-      - type: Registry
-        url: https://open.epic.com/Endpoints/DSTU2
+- aid: select-medical-holdings:select-medical-holdings-fhir-dstu2
+  name: Select Medical FHIR DSTU2 API
+  description: >-
+    Legacy HL7 FHIR DSTU2 (1.0.2) endpoint operated by Select Medical on the same Epic platform, registered
+    as "Select Medical" in Epic's public DSTU2 endpoint directory since 2020-06-01 and still listed active.
+    Retained for older certified applications; new integrations use the R4 endpoint.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
+  tags:
+  - FHIR
+  - Patient Access
+  - Legacy
+  - Healthcare
+  properties:
+  - type: FHIR
+    url: fhir/select-medical-holdings-dstu2-capabilitystatement.json
+  - type: Registry
+    url: https://open.epic.com/Endpoints/DSTU2
+- aid: select-medical-holdings:select-medical-holdings-account-api
+  name: Select Medical Holdings Account API
+  description: >-
+    FHIR R4 Account resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-account-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-adverseevent-api
+  name: Select Medical Holdings Adverse Event API
+  description: >-
+    FHIR R4 AdverseEvent resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - AdverseEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-adverseevent-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-allergyintolerance-api
+  name: Select Medical Holdings Allergy Intolerance API
+  description: >-
+    FHIR R4 AllergyIntolerance resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-allergyintolerance|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - AllergyIntolerance
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-allergyintolerance-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-appointment-api
+  name: Select Medical Holdings Appointment API
+  description: >-
+    FHIR R4 Appointment resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Appointment
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-appointment-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-binary-api
+  name: Select Medical Holdings Binary API
+  description: >-
+    FHIR R4 Binary resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Binary
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-binary-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-bodystructure-api
+  name: Select Medical Holdings Body Structure API
+  description: >-
+    FHIR R4 BodyStructure resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - BodyStructure
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-bodystructure-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-careplan-api
+  name: Select Medical Holdings Care Plan API
+  description: >-
+    FHIR R4 CarePlan resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-careplan|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - CarePlan
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-careplan-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-careteam-api
+  name: Select Medical Holdings Care Team API
+  description: >-
+    FHIR R4 CareTeam resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-careteam|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - CareTeam
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-careteam-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-claim-api
+  name: Select Medical Holdings Claim API
+  description: >-
+    FHIR R4 Claim resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Claim
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-claim-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-communication-api
+  name: Select Medical Holdings Communication API
+  description: >-
+    FHIR R4 Communication resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Communication
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-communication-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-conceptmap-api
+  name: Select Medical Holdings Concept Map API
+  description: >-
+    FHIR R4 ConceptMap resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ConceptMap
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-conceptmap-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-condition-api
+  name: Select Medical Holdings Condition API
+  description: >-
+    FHIR R4 Condition resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-condition-encounter-diagnosis|6.1.0, us-core-condition-problems-health-concerns|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Condition
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-condition-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-consent-api
+  name: Select Medical Holdings Consent API
+  description: >-
+    FHIR R4 Consent resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Consent
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-consent-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-contract-api
+  name: Select Medical Holdings Contract API
+  description: >-
+    FHIR R4 Contract resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Contract
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-contract-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-coverage-api
+  name: Select Medical Holdings Coverage API
+  description: >-
+    FHIR R4 Coverage resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-coverage|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Coverage
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-coverage-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-device-api
+  name: Select Medical Holdings Device API
+  description: >-
+    FHIR R4 Device resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-implantable-device|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Device
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-device-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-devicerequest-api
+  name: Select Medical Holdings Device Request API
+  description: >-
+    FHIR R4 DeviceRequest resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - DeviceRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-devicerequest-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-deviceusestatement-api
+  name: Select Medical Holdings Device Use Statement API
+  description: >-
+    FHIR R4 DeviceUseStatement resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - DeviceUseStatement
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-deviceusestatement-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-diagnosticreport-api
+  name: Select Medical Holdings Diagnostic Report API
+  description: >-
+    FHIR R4 DiagnosticReport resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-diagnosticreport-lab|6.1.0, us-core-diagnosticreport-note|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - DiagnosticReport
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-diagnosticreport-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-documentreference-api
+  name: Select Medical Holdings Document Reference API
+  description: >-
+    FHIR R4 DocumentReference resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-documentreference|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - DocumentReference
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-documentreference-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-encounter-api
+  name: Select Medical Holdings Encounter API
+  description: >-
+    FHIR R4 Encounter resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-encounter|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Encounter
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-encounter-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-endpoint-api
+  name: Select Medical Holdings Endpoint API
+  description: >-
+    FHIR R4 Endpoint resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Endpoint
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-endpoint-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-episodeofcare-api
+  name: Select Medical Holdings Episode Of Care API
+  description: >-
+    FHIR R4 EpisodeOfCare resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - EpisodeOfCare
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-episodeofcare-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-explanationofbenefit-api
+  name: Select Medical Holdings Explanation Of Benefit API
+  description: >-
+    FHIR R4 ExplanationOfBenefit resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ExplanationOfBenefit
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-explanationofbenefit-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-familymemberhistory-api
+  name: Select Medical Holdings Family Member History API
+  description: >-
+    FHIR R4 FamilyMemberHistory resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - FamilyMemberHistory
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-familymemberhistory-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-flag-api
+  name: Select Medical Holdings Flag API
+  description: FHIR R4 Flag resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Flag
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-flag-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-goal-api
+  name: Select Medical Holdings Goal API
+  description: >-
+    FHIR R4 Goal resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-goal|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Goal
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-goal-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-group-api
+  name: Select Medical Holdings Group API
+  description: >-
+    FHIR R4 Group resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-group-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-imagingstudy-api
+  name: Select Medical Holdings Imaging Study API
+  description: >-
+    FHIR R4 ImagingStudy resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ImagingStudy
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-imagingstudy-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-immunization-api
+  name: Select Medical Holdings Immunization API
+  description: >-
+    FHIR R4 Immunization resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-immunization|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Immunization
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-immunization-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-immunizationrecommendation-api
+  name: Select Medical Holdings Immunization Recommendation API
+  description: >-
+    FHIR R4 ImmunizationRecommendation resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ImmunizationRecommendation
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-immunizationrecommendation-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-list-api
+  name: Select Medical Holdings List API
+  description: FHIR R4 List resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - List
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-list-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-location-api
+  name: Select Medical Holdings Location API
+  description: >-
+    FHIR R4 Location resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-location-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-measure-api
+  name: Select Medical Holdings Measure API
+  description: >-
+    FHIR R4 Measure resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Measure
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-measure-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-measurereport-api
+  name: Select Medical Holdings Measure Report API
+  description: >-
+    FHIR R4 MeasureReport resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - MeasureReport
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-measurereport-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-media-api
+  name: Select Medical Holdings Media API
+  description: >-
+    FHIR R4 Media resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-media-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-medication-api
+  name: Select Medical Holdings Medication API
+  description: >-
+    FHIR R4 Medication resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-medication|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Medication
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-medication-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-medicationadministration-api
+  name: Select Medical Holdings Medication Administration API
+  description: >-
+    FHIR R4 MedicationAdministration resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - MedicationAdministration
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-medicationadministration-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-medicationdispense-api
+  name: Select Medical Holdings Medication Dispense API
+  description: >-
+    FHIR R4 MedicationDispense resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-medicationdispense|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - MedicationDispense
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-medicationdispense-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-medicationrequest-api
+  name: Select Medical Holdings Medication Request API
+  description: >-
+    FHIR R4 MedicationRequest resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-medicationrequest|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - MedicationRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-medicationrequest-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-nutritionorder-api
+  name: Select Medical Holdings Nutrition Order API
+  description: >-
+    FHIR R4 NutritionOrder resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - NutritionOrder
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-nutritionorder-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-observation-api
+  name: Select Medical Holdings Observation API
+  description: >-
+    FHIR R4 Observation resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: head-occipital-frontal-circumference-percentile|6.1.0, pediatric-bmi-for-age|6.1.0,
+    pediatric-weight-for-height|6.1.0, us-core-blood-pressure|6.1.0, us-core-bmi|6.1.0, us-core-body-height|6.1.0,
+    us-core-body-temperature|6.1.0, us-core-body-weight|6.1.0, us-core-head-circumference|6.1.0, us-core-heart-rate|6.1.0,
+    us-core-observation-clinical-result|6.1.0, us-core-observation-lab|6.1.0, us-core-observation-occupation|6.1.0,
+    us-core-observation-pregnancyintent|6.1.0, us-core-observation-pregnancystatus|6.1.0, us-core-observation-screening-assessment|6.1.0,
+    us-core-observation-sexual-orientation|6.1.0, us-core-pulse-oximetry|6.1.0, us-core-respiratory-rate|6.1.0,
+    us-core-simple-observation|6.1.0, us-core-smokingstatus|6.1.0, us-core-vital-signs|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Observation
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-observation-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-organization-api
+  name: Select Medical Holdings Organization API
+  description: >-
+    FHIR R4 Organization resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-organization|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-organization-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-patient-api
+  name: Select Medical Holdings Patient API
+  description: >-
+    FHIR R4 Patient resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-patient|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Patient
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-patient-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-practitioner-api
+  name: Select Medical Holdings Practitioner API
+  description: >-
+    FHIR R4 Practitioner resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-practitioner|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Practitioner
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-practitioner-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-practitionerrole-api
+  name: Select Medical Holdings Practitioner Role API
+  description: >-
+    FHIR R4 PractitionerRole resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-practitionerrole|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - PractitionerRole
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-practitionerrole-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-procedure-api
+  name: Select Medical Holdings Procedure API
+  description: >-
+    FHIR R4 Procedure resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-procedure|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Procedure
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-procedure-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-provenance-api
+  name: Select Medical Holdings Provenance API
+  description: >-
+    FHIR R4 Provenance resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-provenance|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Provenance
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-provenance-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-questionnaire-api
+  name: Select Medical Holdings Questionnaire API
+  description: >-
+    FHIR R4 Questionnaire resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Questionnaire
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-questionnaire-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-questionnaireresponse-api
+  name: Select Medical Holdings Questionnaire Response API
+  description: >-
+    FHIR R4 QuestionnaireResponse resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - QuestionnaireResponse
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-questionnaireresponse-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-relatedperson-api
+  name: Select Medical Holdings Related Person API
+  description: >-
+    FHIR R4 RelatedPerson resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-relatedperson|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - RelatedPerson
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-relatedperson-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-requestgroup-api
+  name: Select Medical Holdings Request Group API
+  description: >-
+    FHIR R4 RequestGroup resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - RequestGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-requestgroup-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-researchstudy-api
+  name: Select Medical Holdings Research Study API
+  description: >-
+    FHIR R4 ResearchStudy resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ResearchStudy
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-researchstudy-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-researchsubject-api
+  name: Select Medical Holdings Research Subject API
+  description: >-
+    FHIR R4 ResearchSubject resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ResearchSubject
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-researchsubject-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-servicerequest-api
+  name: Select Medical Holdings Service Request API
+  description: >-
+    FHIR R4 ServiceRequest resource as declared by the Select Medical FHIR server CapabilityStatement.
+    Declared US Core profiles: us-core-servicerequest|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ServiceRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-servicerequest-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-specimen-api
+  name: Select Medical Holdings Specimen API
+  description: >-
+    FHIR R4 Specimen resource as declared by the Select Medical FHIR server CapabilityStatement. Declared
+    US Core profiles: us-core-specimen|6.1.0.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Specimen
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-specimen-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-substance-api
+  name: Select Medical Holdings Substance API
+  description: >-
+    FHIR R4 Substance resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Substance
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-substance-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-task-api
+  name: Select Medical Holdings Task API
+  description: FHIR R4 Task resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - Task
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-task-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
+- aid: select-medical-holdings:select-medical-holdings-valueset-api
+  name: Select Medical Holdings Value Set API
+  description: >-
+    FHIR R4 ValueSet resource as declared by the Select Medical FHIR server CapabilityStatement.
+  humanURL: https://mychart.selectmedical.com/MyChart/signup
+  baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  tags:
+  - ValueSet
+  properties:
+  - type: OpenAPI
+    url: openapi/select-medical-holdings-valueset-api-openapi.yml
+  - type: FHIR
+    url: fhir/select-medical-holdings-r4-capabilitystatement.json
+  - type: Authentication
+    url: authentication/select-medical-holdings-authentication.yml
+  - type: OAuthScopes
+    url: scopes/select-medical-holdings-scopes.yml
+  - type: ErrorCatalog
+    url: errors/select-medical-holdings-problem-types.yml
+  - type: Conventions
+    url: conventions/select-medical-holdings-conventions.yml
+  - type: DataModel
+    url: data-model/select-medical-holdings-data-model.yml
+  - type: FHIR Standard
+    url: https://hl7.org/fhir/R4/
+  - type: Registry
+    url: https://open.epic.com/Endpoints/R4
 common:
   - type: CapabilityMap
     url: capabilities/select-medical-holdings-capability-edges.yml
