@@ -265,6 +265,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
   tags:
+  - Communications
+  tags_raw:
   - Communication
   properties:
   - type: OpenAPI
@@ -566,7 +568,8 @@ apis:
     FHIR R4 Endpoint resource as declared by the Select Medical FHIR server CapabilityStatement.
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
-  tags:
+  tags: []
+  tags_raw:
   - Endpoint
   properties:
   - type: OpenAPI
@@ -1118,6 +1121,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -1529,6 +1534,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - AllergyIntolerance
+  tags_raw:
   - Allergy Intolerance
   properties:
   - type: OpenAPI
@@ -1557,6 +1564,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - CarePlan
+  tags_raw:
   - Care plan
   properties:
   - type: OpenAPI
@@ -1585,6 +1594,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - DocumentReference
+  tags_raw:
   - Document Reference
   properties:
   - type: OpenAPI
@@ -1612,6 +1623,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - MedicationAdministration
+  tags_raw:
   - Medication Administration
   properties:
   - type: OpenAPI
@@ -1640,6 +1653,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
@@ -1668,6 +1683,8 @@ apis:
   humanURL: https://mychart.selectmedical.com/MyChart/signup
   baseURL: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/DSTU2
   tags:
+  - PractitionerRole
+  tags_raw:
   - Practitioner Role
   properties:
   - type: OpenAPI
