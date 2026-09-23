@@ -1,0 +1,399 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Patient API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Patient
+  description: 'FHIR R4 Patient resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-patient|6.1.0.'
+paths:
+  /Patient:
+    get:
+      operationId: searchPatient
+      summary: Search Patient resources
+      description: Search for Patient resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Patient
+      parameters:
+      - name: address
+        in: query
+        description: Search for Patient resources using an address string.
+        required: false
+        schema:
+          type: string
+      - name: address-city
+        in: query
+        description: Search for Patient resources using the city for a patient's home address. You can use this parameter along with other address parameters.
+        required: false
+        schema:
+          type: string
+      - name: address-postalcode
+        in: query
+        description: Search for Patient resources using the postal code for a patient's home address. You can use this parameter along with other address parameters.
+        required: false
+        schema:
+          type: string
+      - name: address-state
+        in: query
+        description: Search for Patient resources using the state for a patient's home address. You can use this parameter along with other address parameters.
+        required: false
+        schema:
+          type: string
+      - name: birthdate
+        in: query
+        description: Search for Patient resources using a date of birth in ISO format (YYYY-MM-DD).
+        required: false
+        schema:
+          type: string
+      - name: doc-type
+        in: query
+        description: Search for Patient resources using Singapore document type. This parameter is only used in Singapore environment and is only respected if a Singapore document ID is passed in as one of the identifiers.
+        required: false
+        schema:
+          type: string
+      - name: family
+        in: query
+        description: Search for Patient resources by family (last) name. You can use the family parameter along with other name parameters to search by a patient's name. Family name searching supports exact matching, "sounds like" matching, and patient aliases.
+        required: false
+        schema:
+          type: string
+      - name: gender
+        in: query
+        description: 'Search for Patient resources using the following gender codes: female, male, other, or unknown.'
+        required: false
+        schema:
+          type: string
+      - name: given
+        in: query
+        description: Search for Patient resources by given (first) name.  You can use the given parameter along with other name parameters to search by a patient's name. Given name searching supports both exact and "sounds like" matches. Patient aliases and dominant name aliases (ex. Bob for Robert) are also supported.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: Search for Patient resources by a patient's identifier. You can use the identifier parameter as the only parameter in a search or in conjunction with other parameters. A patient's identifier must be in the format {<code system>|}<code> or {<ID Type>|}<ID>.
+        required: false
+        schema:
+          type: string
+      - name: legal-sex
+        in: query
+        description: 'Search for Patient resources using the following gender codes: female, male, nonbinary, x, other, or unknown.'
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Search for Patient resources by a patient's name. To search on specific name parts use the name part parameters, such as family or given. This parameter is ignored if any name part parameters are used.
+        required: false
+        schema:
+          type: string
+      - name: own-name
+        in: query
+        description: Search for Patient resources by patient's own last name, usually used in non-US names. You can use the own-name parameter along with other name parameters to search by a patient's name.
+        required: false
+        schema:
+          type: string
+      - name: own-prefix
+        in: query
+        description: Search for Patient resources by patient's own last name prefix, usually used in non-US names. You can use the own-prefix parameter along with other name parameters to search by a patient's name, but own-name must also be included.
+        required: false
+        schema:
+          type: string
+      - name: partner-name
+        in: query
+        description: Search for Patient resources by patient's spouse's last name, usually used in non-US names. You can use the partner-name parameter along with other name parameters to search by a patient's name, but own-name must also be included.
+        required: false
+        schema:
+          type: string
+      - name: partner-prefix
+        in: query
+        description: Search for Patient resources by patient's spouse's last name prefix, usually used in non-US names. You can use the partner-prefix parameter along with other name parameters to search by a patient's name, but own-name must also be included.
+        required: false
+        schema:
+          type: string
+      - name: telecom
+        in: query
+        description: Search for Patient resources using a patient's home phone number, cell phone number, or email address.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: active
+        in: query
+        description: FHIR search parameter 'active' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: address-country
+        in: query
+        description: FHIR search parameter 'address-country' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: address-use
+        in: query
+        description: FHIR search parameter 'address-use' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: death-date
+        in: query
+        description: FHIR search parameter 'death-date' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: FHIR search parameter 'email' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: general-practitioner
+        in: query
+        description: FHIR search parameter 'general-practitioner' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: FHIR search parameter 'language' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: link
+        in: query
+        description: FHIR search parameter 'link' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: organization
+        in: query
+        description: FHIR search parameter 'organization' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: phone
+        in: query
+        description: FHIR search parameter 'phone' declared for Patient.
+        required: false
+        schema:
+          type: string
+      - name: phonetic
+        in: query
+        description: FHIR search parameter 'phonetic' declared for Patient.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Patient resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createPatient
+      summary: Create a Patient resource
+      tags:
+      - Patient
+      description: Create a new Patient resource.
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: The Patient resource was created.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /Patient/{id}:
+    get:
+      operationId: readPatient
+      summary: Read a Patient resource by id
+      tags:
+      - Patient
+      description: Retrieve a single Patient resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Patient resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Patient resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

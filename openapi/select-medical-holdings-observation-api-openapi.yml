@@ -1,0 +1,429 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Observation API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Observation
+  description: FHIR R4 Observation resource as declared by the Select Medical FHIR server CapabilityStatement.
+paths:
+  /Observation:
+    get:
+      operationId: searchObservation
+      summary: Search Observation resources
+      description: Search for Observation resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Observation
+      parameters:
+      - name: based-on
+        in: query
+        description: Refine a search for Observation resources by specifying a Reference associated with the Observation.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Refine a search for Observation resources by category or SNOMED code. Epic categories are laboratory, vital-signs, social-history, core-characteristics, LDA, LDA-property, LDA-assessment, functional-mental-status, periodontal, labor-delivery, newborn-delivery, obstetrics-gynecology, survey, sdoh, and imaging. Supported SNOMED codes include 384821006, 118228005, 252275004, 275711006, 68793005, 395124008, 314076009, 19851009, and 405825005.
+        required: false
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: Refine a search for Observation resources by LOINC code, SNOMED code, flowsheet row IDs, or SmartData Identifiers. Codes associated with the labor-delivery and newborn-delivery categories require that the category be specified.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Refine a search for Observation resources by specifying a date or date range that an Observation was resulted or recorded. Enter dates in ISO format (YYYY[-MM[-DD[THH:MM[:SS][TZ]]]]). Local server time is assumed if time zone information is not included.
+        required: false
+        schema:
+          type: string
+      - name: focus
+        in: query
+        description: Refine a search for Observation resources by specifying a Reference associated with the Observation.
+        required: false
+        schema:
+          type: string
+      - name: issued
+        in: query
+        description: Refine a search for Observation resources by specifying a date or date range that an Observation was made available. Enter dates in ISO format (YYYY[-MM[-DD[THH:MM[:SS][TZ]]]]). Local server time is assumed if time zone information is not included.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for Observation resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for Observation resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: combo-code
+        in: query
+        description: FHIR search parameter 'combo-code' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: combo-data-absent-reason
+        in: query
+        description: FHIR search parameter 'combo-data-absent-reason' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: combo-value-concept
+        in: query
+        description: FHIR search parameter 'combo-value-concept' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: component-code
+        in: query
+        description: FHIR search parameter 'component-code' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: component-data-absent-reason
+        in: query
+        description: FHIR search parameter 'component-data-absent-reason' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: component-value-concept
+        in: query
+        description: FHIR search parameter 'component-value-concept' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: data-absent-reason
+        in: query
+        description: FHIR search parameter 'data-absent-reason' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: derived-from
+        in: query
+        description: FHIR search parameter 'derived-from' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: device
+        in: query
+        description: FHIR search parameter 'device' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: FHIR search parameter 'encounter' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: has-member
+        in: query
+        description: FHIR search parameter 'has-member' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: method
+        in: query
+        description: FHIR search parameter 'method' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: part-of
+        in: query
+        description: FHIR search parameter 'part-of' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: performer
+        in: query
+        description: FHIR search parameter 'performer' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: specimen
+        in: query
+        description: FHIR search parameter 'specimen' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: FHIR search parameter 'status' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: value-concept
+        in: query
+        description: FHIR search parameter 'value-concept' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: value-date
+        in: query
+        description: FHIR search parameter 'value-date' declared for Observation.
+        required: false
+        schema:
+          type: string
+      - name: value-string
+        in: query
+        description: FHIR search parameter 'value-string' declared for Observation.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Observation resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createObservation
+      summary: Create a Observation resource
+      tags:
+      - Observation
+      description: Create a new Observation resource.
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: The Observation resource was created.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /Observation/{id}:
+    get:
+      operationId: readObservation
+      summary: Read a Observation resource by id
+      tags:
+      - Observation
+      description: Retrieve a single Observation resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Observation resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Observation resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateObservation
+      summary: Update a Observation resource
+      tags:
+      - Observation
+      description: Update an existing Observation resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Observation resource.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: The Observation resource was updated.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

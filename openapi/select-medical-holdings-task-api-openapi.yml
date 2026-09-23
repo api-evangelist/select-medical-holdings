@@ -1,0 +1,354 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Task API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Task
+  description: FHIR R4 Task resource as declared by the Select Medical FHIR server CapabilityStatement.
+paths:
+  /Task:
+    get:
+      operationId: searchTask
+      summary: Search Task resources
+      description: Search for Task resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Task
+      parameters:
+      - name: code
+        in: query
+        description: Specify community-resource for CRRN tasks, episode-checklist for Episode Checklist tasks. When nothing is specified, all valid tasks are returned.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: Further refine the search for a task by specifying the encounter associated with the task.
+        required: false
+        schema:
+          type: string
+      - name: focus
+        in: query
+        description: FHIR search parameter 'focus' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for Task resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Restrict the search for tasks based on task status.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for Task resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: authored-on
+        in: query
+        description: FHIR search parameter 'authored-on' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: based-on
+        in: query
+        description: FHIR search parameter 'based-on' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: business-status
+        in: query
+        description: FHIR search parameter 'business-status' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: group-identifier
+        in: query
+        description: FHIR search parameter 'group-identifier' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: intent
+        in: query
+        description: FHIR search parameter 'intent' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: modified
+        in: query
+        description: FHIR search parameter 'modified' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: owner
+        in: query
+        description: FHIR search parameter 'owner' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: part-of
+        in: query
+        description: FHIR search parameter 'part-of' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: performer
+        in: query
+        description: FHIR search parameter 'performer' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: period
+        in: query
+        description: FHIR search parameter 'period' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: priority
+        in: query
+        description: FHIR search parameter 'priority' declared for Task.
+        required: false
+        schema:
+          type: string
+      - name: requester
+        in: query
+        description: FHIR search parameter 'requester' declared for Task.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Task resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /Task/{id}:
+    get:
+      operationId: readTask
+      summary: Read a Task resource by id
+      tags:
+      - Task
+      description: Retrieve a single Task resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Task resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Task resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTask
+      summary: Update a Task resource
+      tags:
+      - Task
+      description: Update an existing Task resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Task resource.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: The Task resource was updated.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

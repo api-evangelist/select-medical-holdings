@@ -1,0 +1,411 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Document Reference API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Document Reference
+  description: 'FHIR R4 DocumentReference resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-documentreference|6.1.0.'
+paths:
+  /DocumentReference:
+    get:
+      operationId: searchDocumentReference
+      summary: Search DocumentReference resources
+      description: Search for DocumentReference resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Document Reference
+      parameters:
+      - name: author
+        in: query
+        description: Further refine a search for a given set of DocumentReferences on a patient by specifying a Reference that corresponds to the author of the document.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Refine a search for DocumentReference resources by category.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Further refine a search for a given set of DocumentReferences on a patient by specifying a date or date range in ISO format (YYYY[-MM[-DD[THH:MM[:SS][TZ]]]]]) that corresponds to the document creation time. Local server time is assumed if time zone information is not included.
+        required: false
+        schema:
+          type: string
+      - name: docstatus
+        in: query
+        description: Further refine a search for a given set of DocumentReferences on a patient by specifying a docStatus. By default, all docStatuses are returned.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: Search for DocumentReference resources for a specific internal or external encounter
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for DocumentReference resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: period
+        in: query
+        description: Further refine a search for a given set of DocumentReferences on a patient by specifying a date or date range in ISO format (YYYY[-MM[-DD]]) that corresponds to the time of the service that is being documented.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Further refine a search for a given set of DocumentReferences on a patient by specifying a status of the document.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for DocumentReference resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: 'Further refine a search for a given set of DocumentReferences on a patient by specifying a type code to return only documents of that type. Use the format: type=<code> to search all supported systems with that code or type=<system>|<code> to further refine the search to one code system. Not supported for questionnaire-response search.'
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: _lastupdated
+        in: query
+        description: Further refine a search by the date list in meta.lastupdated.
+        required: false
+        schema:
+          type: string
+      - name: authenticator
+        in: query
+        description: FHIR search parameter 'authenticator' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: contenttype
+        in: query
+        description: FHIR search parameter 'contenttype' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: custodian
+        in: query
+        description: FHIR search parameter 'custodian' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: FHIR search parameter 'description' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: event
+        in: query
+        description: FHIR search parameter 'event' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: facility
+        in: query
+        description: FHIR search parameter 'facility' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: FHIR search parameter 'format' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: FHIR search parameter 'language' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: related
+        in: query
+        description: FHIR search parameter 'related' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: relatesto
+        in: query
+        description: FHIR search parameter 'relatesto' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: relation
+        in: query
+        description: FHIR search parameter 'relation' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: security-label
+        in: query
+        description: FHIR search parameter 'security-label' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      - name: setting
+        in: query
+        description: FHIR search parameter 'setting' declared for DocumentReference.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching DocumentReference resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createDocumentReference
+      summary: Create a DocumentReference resource
+      tags:
+      - Document Reference
+      description: Create a new DocumentReference resource.
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: The DocumentReference resource was created.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /DocumentReference/{id}:
+    get:
+      operationId: readDocumentReference
+      summary: Read a DocumentReference resource by id
+      tags:
+      - Document Reference
+      description: Retrieve a single DocumentReference resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the DocumentReference resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested DocumentReference resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateDocumentReference
+      summary: Update a DocumentReference resource
+      tags:
+      - Document Reference
+      description: Update an existing DocumentReference resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the DocumentReference resource.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: The DocumentReference resource was updated.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

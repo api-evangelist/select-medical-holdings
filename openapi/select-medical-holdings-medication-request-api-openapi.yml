@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Medication Request API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Medication Request
+  description: 'FHIR R4 MedicationRequest resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-medicationrequest|6.1.0.'
+paths:
+  /MedicationRequest:
+    get:
+      operationId: searchMedicationRequest
+      summary: Search MedicationRequest resources
+      description: Search for MedicationRequest resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Medication Request
+      parameters:
+      - name: category
+        in: query
+        description: Refine a search for MedicationRequest resources by category. By default, the search returns all categories. Categories of inpatient, outpatient, community, and discharge are supported.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Refine a search for MedicationRequest resources for a given patient by specifying a date or a range of dates for when the medication was activated.
+        required: false
+        schema:
+          type: string
+      - name: intent
+        in: query
+        description: Refine a search for MedicationRequest resources by one or more intents.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for MedicationRequest resources for a specified patient ID. You can use "patient" and "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Refine a search for MedicationRequest resources by one or more statuses.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for MedicationRequest resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: authoredon
+        in: query
+        description: FHIR search parameter 'authoredon' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: FHIR search parameter 'code' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: FHIR search parameter 'encounter' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: intended-dispenser
+        in: query
+        description: FHIR search parameter 'intended-dispenser' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: intended-performer
+        in: query
+        description: FHIR search parameter 'intended-performer' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: intended-performertype
+        in: query
+        description: FHIR search parameter 'intended-performertype' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: medication
+        in: query
+        description: FHIR search parameter 'medication' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: priority
+        in: query
+        description: FHIR search parameter 'priority' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      - name: requester
+        in: query
+        description: FHIR search parameter 'requester' declared for MedicationRequest.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching MedicationRequest resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /MedicationRequest/{id}:
+    get:
+      operationId: readMedicationRequest
+      summary: Read a MedicationRequest resource by id
+      tags:
+      - Medication Request
+      description: Retrieve a single MedicationRequest resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the MedicationRequest resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested MedicationRequest resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

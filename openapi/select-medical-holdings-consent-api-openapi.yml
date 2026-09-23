@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Consent API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Consent
+  description: FHIR R4 Consent resource as declared by the Select Medical FHIR server CapabilityStatement.
+paths:
+  /Consent:
+    get:
+      operationId: searchConsent
+      summary: Search Consent resources
+      description: Search for Consent resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Consent
+      parameters:
+      - name: category
+        in: query
+        description: Search for Consent resources by category.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for Consent resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Search for Consent resources by status.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for Consent resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: action
+        in: query
+        description: FHIR search parameter 'action' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: actor
+        in: query
+        description: FHIR search parameter 'actor' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: consentor
+        in: query
+        description: FHIR search parameter 'consentor' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: data
+        in: query
+        description: FHIR search parameter 'data' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: FHIR search parameter 'date' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: organization
+        in: query
+        description: FHIR search parameter 'organization' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: period
+        in: query
+        description: FHIR search parameter 'period' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: purpose
+        in: query
+        description: FHIR search parameter 'purpose' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: FHIR search parameter 'scope' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: security-label
+        in: query
+        description: FHIR search parameter 'security-label' declared for Consent.
+        required: false
+        schema:
+          type: string
+      - name: source-reference
+        in: query
+        description: FHIR search parameter 'source-reference' declared for Consent.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Consent resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /Consent/{id}:
+    get:
+      operationId: readConsent
+      summary: Read a Consent resource by id
+      tags:
+      - Consent
+      description: Retrieve a single Consent resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Consent resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Consent resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

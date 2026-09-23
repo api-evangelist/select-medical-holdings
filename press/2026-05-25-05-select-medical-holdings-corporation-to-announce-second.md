@@ -1,7 +1,9 @@
 ---
 title: Select Medical Holdings Corporation to Announce Second ...
 url: https://www.biospace.com/select-medical-holdings-corporation-to-announce-second-quarter-2019-results-on-thursday-august-1
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Select Medical Holdings" press release artificial intelligence'
 position: 5
 source: serpapi-google

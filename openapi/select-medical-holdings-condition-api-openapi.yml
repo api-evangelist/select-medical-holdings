@@ -1,0 +1,345 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Condition API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Condition
+  description: 'FHIR R4 Condition resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-condition-encounter-diagnosis|6.1.0, us-core-condition-problems-health-concerns|6.1.0.'
+paths:
+  /Condition:
+    get:
+      operationId: searchCondition
+      summary: Search Condition resources
+      description: Search for Condition resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Condition
+      parameters:
+      - name: abatement-date
+        in: query
+        description: Search for Conditions with a specified abatement date.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Search for Condition resources by category.
+        required: false
+        schema:
+          type: string
+      - name: clinical-status
+        in: query
+        description: Refine a search for Condition resources by clinicalStatus. Only clinical statuses of 'inactive', 'resolved' and 'active' are supported for health concerns and problem list items. Only clinical statuses of 'inactive' and 'active' are supported for infections.
+        required: false
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: Search for Conditions with a specified code.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: Search for Condition resources for specific encounters.
+        required: false
+        schema:
+          type: string
+      - name: onset-date
+        in: query
+        description: Search for Conditions with a specified onset date.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search for Condition resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: recorded-date
+        in: query
+        description: Search for Conditions with a specified recorded date.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search for Condition resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: abatement-string
+        in: query
+        description: FHIR search parameter 'abatement-string' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: asserter
+        in: query
+        description: FHIR search parameter 'asserter' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: body-site
+        in: query
+        description: FHIR search parameter 'body-site' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: evidence
+        in: query
+        description: FHIR search parameter 'evidence' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: evidence-detail
+        in: query
+        description: FHIR search parameter 'evidence-detail' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: FHIR search parameter 'identifier' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: onset-info
+        in: query
+        description: FHIR search parameter 'onset-info' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: severity
+        in: query
+        description: FHIR search parameter 'severity' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: stage
+        in: query
+        description: FHIR search parameter 'stage' declared for Condition.
+        required: false
+        schema:
+          type: string
+      - name: verification-status
+        in: query
+        description: FHIR search parameter 'verification-status' declared for Condition.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Condition resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createCondition
+      summary: Create a Condition resource
+      tags:
+      - Condition
+      description: Create a new Condition resource.
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: The Condition resource was created.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /Condition/{id}:
+    get:
+      operationId: readCondition
+      summary: Read a Condition resource by id
+      tags:
+      - Condition
+      description: Retrieve a single Condition resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Condition resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Condition resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

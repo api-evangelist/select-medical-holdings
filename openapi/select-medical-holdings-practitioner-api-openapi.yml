@@ -1,0 +1,306 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Practitioner API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: Practitioner
+  description: 'FHIR R4 Practitioner resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-practitioner|6.1.0.'
+paths:
+  /Practitioner:
+    get:
+      operationId: searchPractitioner
+      summary: Search Practitioner resources
+      description: Search for Practitioner resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - Practitioner
+      parameters:
+      - name: address
+        in: query
+        description: Any part of an address (street, city, etc.) where a practitioner can be visited. When used, family is also required. Only respected if no other address parameters are populated. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: address-city
+        in: query
+        description: The city where a practitioner can be visited. When used, address-state is also required. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: address-postalcode
+        in: query
+        description: The zip code where a practitioner can be found. When used, family is also required.
+        required: false
+        schema:
+          type: string
+      - name: address-state
+        in: query
+        description: The state where a practitioner can be found. When used, family is also required. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: family
+        in: query
+        description: A practitioner's family (last) name. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: given
+        in: query
+        description: A practitioner's given (first) name. When used, family is also required. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: A practitioner's identifier in the format <code system>|<code>. When this parameter is provided, all others (except _id) are ignored.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Any part of a practitioner's name. For full names, format should be first last. When specified, family and given are ignored. Only the first instance of this parameter is respected.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: active
+        in: query
+        description: FHIR search parameter 'active' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: address-country
+        in: query
+        description: FHIR search parameter 'address-country' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: address-use
+        in: query
+        description: FHIR search parameter 'address-use' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: communication
+        in: query
+        description: FHIR search parameter 'communication' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: FHIR search parameter 'email' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: gender
+        in: query
+        description: FHIR search parameter 'gender' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: phone
+        in: query
+        description: FHIR search parameter 'phone' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: phonetic
+        in: query
+        description: FHIR search parameter 'phonetic' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      - name: telecom
+        in: query
+        description: FHIR search parameter 'telecom' declared for Practitioner.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching Practitioner resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /Practitioner/{id}:
+    get:
+      operationId: readPractitioner
+      summary: Read a Practitioner resource by id
+      tags:
+      - Practitioner
+      description: Retrieve a single Practitioner resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the Practitioner resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Practitioner resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html

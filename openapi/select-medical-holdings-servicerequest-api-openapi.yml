@@ -1,0 +1,387 @@
+openapi: 3.2.0
+info:
+  title: Select Medical FHIR R4 Service Request API
+  version: 4.0.1
+  summary: HL7 FHIR R4 patient-access API operated by Select Medical on its Epic platform.
+  description: Machine-readable description of the Select Medical FHIR R4 server, DERIVED mechanically from the server's own CapabilityStatement at https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4/metadata (fetched 2026-08-28, HTTP 200, application/fhir+json).
+  contact:
+    name: Select Medical
+    url: https://www.selectmedical.com/
+  license:
+    name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+servers:
+- url: https://epicproxy.et0948.epichosted.com/FhirProxy/api/FHIR/R4
+  description: Select Medical FHIR R4 production server (Epic FhirProxy, community et0948)
+security:
+- smartOnFhir: []
+tags:
+- name: ServiceRequest
+  description: 'FHIR R4 ServiceRequest resource as declared by the Select Medical FHIR server CapabilityStatement. Declared US Core profiles: us-core-servicerequest|6.1.0.'
+paths:
+  /ServiceRequest:
+    get:
+      operationId: searchServiceRequest
+      summary: Search ServiceRequest resources
+      description: Search for ServiceRequest resources. Declared search parameters come verbatim from the server's CapabilityStatement.
+      tags:
+      - ServiceRequest
+      parameters:
+      - name: authored
+        in: query
+        description: Refine a search for ServiceRequests for a particular date and time. By default, all ServiceRequests are returned.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Refine a search for ServiceRequests of a particular category. By default, all ServiceRequests are returned.
+        required: false
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: Refine a search for ServiceRequest based on code. By default all service requests are returned.
+        required: false
+        schema:
+          type: string
+      - name: encounter
+        in: query
+        description: Search for ServiceRequest resources for specific encounters. If not provided, all ServiceRequest results are returned.
+        required: false
+        schema:
+          type: string
+      - name: identifier
+        in: query
+        description: Refine a search for ServiceRequest by identifier.
+        required: false
+        schema:
+          type: string
+      - name: onlyscannable
+        in: query
+        description: Refine a search for ServiceRequest resources to scannable only. By default, all ServiceRequests are returned. Use a value of "true" to only return scannable ServiceRequests. Can only be used when the application is launched from Hyperspace.
+        required: false
+        schema:
+          type: string
+      - name: patient
+        in: query
+        description: Search ServiceRequest resources for a specified patient ID. You can use "patient" or "subject" equivalently, but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: requester
+        in: query
+        description: Refine a search for ServiceRequest resources by individual making the request. By default, all ServiceRequests are returned.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Refine a search for ServiceRequest resources by status. By default, all ServiceRequests are returned. Statuses of draft, active, completed, revoked, and unknown are supported.
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: Search ServiceRequest resources for a specified patient ID. You can use "patient" or "subject" equivalently but they cannot be used at the same time for different references.
+        required: false
+        schema:
+          type: string
+      - name: _count
+        in: query
+        description: Number of results per page.
+        required: false
+        schema:
+          type: string
+      - name: _id
+        in: query
+        description: FHIR resource IDs for the desired resources. Can be used in combination with _count, _include, and _revInclude. All others will be ignored.
+        required: false
+        schema:
+          type: string
+      - name: based-on
+        in: query
+        description: FHIR search parameter 'based-on' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: body-site
+        in: query
+        description: FHIR search parameter 'body-site' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: instantiates-canonical
+        in: query
+        description: FHIR search parameter 'instantiates-canonical' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: intent
+        in: query
+        description: FHIR search parameter 'intent' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: occurrence
+        in: query
+        description: FHIR search parameter 'occurrence' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: performer
+        in: query
+        description: FHIR search parameter 'performer' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: performer-type
+        in: query
+        description: FHIR search parameter 'performer-type' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: priority
+        in: query
+        description: FHIR search parameter 'priority' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: replaces
+        in: query
+        description: FHIR search parameter 'replaces' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: requisition
+        in: query
+        description: FHIR search parameter 'requisition' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      - name: specimen
+        in: query
+        description: FHIR search parameter 'specimen' declared for ServiceRequest.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A Bundle of matching ServiceRequest resources.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createServiceRequest
+      summary: Create a ServiceRequest resource
+      tags:
+      - ServiceRequest
+      description: Create a new ServiceRequest resource.
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: The ServiceRequest resource was created.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /ServiceRequest/{id}:
+    get:
+      operationId: readServiceRequest
+      summary: Read a ServiceRequest resource by id
+      tags:
+      - ServiceRequest
+      description: Retrieve a single ServiceRequest resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the ServiceRequest resource.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested ServiceRequest resource.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateServiceRequest
+      summary: Update a ServiceRequest resource
+      tags:
+      - ServiceRequest
+      description: Update an existing ServiceRequest resource by its logical id.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Logical id of the ServiceRequest resource.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: The ServiceRequest resource was updated.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    BadRequest:
+      description: Malformed request.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Missing or invalid OAuth 2.0 access token.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
+    OperationOutcome:
+      type: object
+      description: FHIR R4 OperationOutcome — the error envelope this server returns.
+      properties:
+        resourceType:
+          type: string
+          const: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              diagnostics:
+                type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                        display:
+                          type: string
+                  text:
+                    type: string
+      required:
+      - resourceType
+      - issue
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+  securitySchemes:
+    smartOnFhir:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 as advertised by the server's .well-known/smart-configuration.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/authorize
+          tokenUrl: https://epicproxy.et0948.epichosted.com/FhirProxy/oauth2/token
+          scopes:
+            openid: OpenID Connect authentication
+            profile: Profile claims
+            fhirUser: Identity of the authorized FHIR user
+            launch: EHR launch context
+            epic.scanning.dmsusername: Epic document-management scanning username
+externalDocs:
+  description: HL7 FHIR R4 RESTful API specification
+  url: https://hl7.org/fhir/R4/http.html
