@@ -76,6 +76,12 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: No resource of this type with that id.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
     BadRequest:
       description: Malformed request.
       content:
@@ -84,12 +90,6 @@ components:
             $ref: '#/components/schemas/OperationOutcome'
     Unauthorized:
       description: Missing or invalid OAuth 2.0 access token.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    NotFound:
-      description: No resource of this type with that id.
       content:
         application/fhir+json:
           schema:
