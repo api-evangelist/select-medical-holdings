@@ -48,6 +48,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
     NotFound:
       description: No resource of this type with that id.
       content:
@@ -60,13 +66,17 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    Forbidden:
-      description: The token does not carry the scope required for this resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
     OperationOutcome:
       type: object
       description: FHIR R4 OperationOutcome — the error envelope this server returns.
@@ -109,16 +119,6 @@ components:
       required:
       - resourceType
       - issue
-    Resource:
-      type: object
-      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      required:
-      - resourceType
   securitySchemes:
     smartOnFhir:
       type: oauth2

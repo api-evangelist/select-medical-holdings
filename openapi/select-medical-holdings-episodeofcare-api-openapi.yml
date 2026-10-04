@@ -135,6 +135,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    Forbidden:
+      description: The token does not carry the scope required for this resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
     NotFound:
       description: No resource of this type with that id.
       content:
@@ -147,13 +153,50 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    Forbidden:
-      description: The token does not carry the scope required for this resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    Bundle:
+      type: object
+      description: A FHIR R4 searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                $ref: '#/components/schemas/Resource'
+      required:
+      - resourceType
+      - type
+    Resource:
+      type: object
+      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      required:
+      - resourceType
     OperationOutcome:
       type: object
       description: FHIR R4 OperationOutcome — the error envelope this server returns.
@@ -196,49 +239,6 @@ components:
       required:
       - resourceType
       - issue
-    Resource:
-      type: object
-      description: A FHIR R4 resource. Structure is defined by HL7 FHIR R4 and the declared US Core profiles.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      required:
-      - resourceType
-    Bundle:
-      type: object
-      description: A FHIR R4 searchset Bundle.
-      properties:
-        resourceType:
-          type: string
-          const: Bundle
-        type:
-          type: string
-        total:
-          type: integer
-        link:
-          type: array
-          items:
-            type: object
-            properties:
-              relation:
-                type: string
-              url:
-                type: string
-                format: uri
-        entry:
-          type: array
-          items:
-            type: object
-            properties:
-              fullUrl:
-                type: string
-              resource:
-                $ref: '#/components/schemas/Resource'
-      required:
-      - resourceType
-      - type
   securitySchemes:
     smartOnFhir:
       type: oauth2
