@@ -1,0 +1,10 @@
+[
+  {
+    "repo": "select-medical-holdings",
+    "captured_at": "2026-10-11T125655",
+    "source_url": "https://mychart.selectmedical.com",
+    "source_type": "fallback-domain",
+    "file": "select-medical-holdings-2026-10-11T125655.png",
+    "bytes": 320118
+  }
+]
