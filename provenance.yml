@@ -32,7 +32,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-10-31T095417.yml:
+  kin/checks-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -87,6 +87,15 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-10-31T095417.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T171331.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T200237.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/select-medical-holdings-lifecycle.yml:
@@ -284,6 +293,9 @@ artifacts:
   packages/select-medical-holdings-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/select-medical-holdings-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/select-medical-holdings-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -305,6 +317,9 @@ artifacts:
   rate-limits/select-medical-holdings-rate-limits.yml:
     method: unknown
     evidence: no authorship recorded
+  rules/select-medical-holdings-rules.yml:
+    method: generated
+    evidence: declared in the artifact
   scopes/select-medical-holdings-scopes.yml:
     method: unknown
     evidence: no authorship recorded
